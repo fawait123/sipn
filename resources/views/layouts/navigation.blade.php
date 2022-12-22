@@ -38,6 +38,12 @@
                         <span class="nk-menu-text">Siswa </span>
                     </a>
                 </li><!-- .nk-menu-item -->
+                <li class="nk-menu-item">
+                    <a href="{{ route('ekskul.index') }}" class="nk-menu-link">
+                        <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
+                        <span class="nk-menu-text">Ekskul </span>
+                    </a>
+                </li><!-- .nk-menu-item -->
             </ul><!-- .nk-menu -->
         </div><!-- .nk-sidebar-menu -->
     </div><!-- .nk-sidebar-content -->

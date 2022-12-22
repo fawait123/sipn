@@ -39,7 +39,7 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        siswa::create(array_merge($request->all(),['kd_siswa'=>AutoCode::code('MP')]));
+        siswa::create(array_merge($request->all(),['kd_siswa'=>AutoCode::code('SW')]));
         return redirect()->route('siswa.index')->with(['message' =>'Tambah data siswa berhasil']);
     }
 

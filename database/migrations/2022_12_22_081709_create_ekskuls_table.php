@@ -13,9 +13,12 @@ class CreateEkskulsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ekskuls', function (Blueprint $table) {
-            $table->id();
+        Schema::create('ekskul', function (Blueprint $table) {
+            $table->string('kd_ekskul');
+            $table->string('nm_ekskul');
+            $table->string('kd_admin');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

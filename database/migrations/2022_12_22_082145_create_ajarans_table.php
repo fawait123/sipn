@@ -13,9 +13,18 @@ class CreateAjaransTable extends Migration
      */
     public function up()
     {
-        Schema::create('ajarans', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tahun_ajaran', function (Blueprint $table) {
+            $table->string('kd_tahun');
+            $table->string('th_ajaran');
+            $table->string('bobot_nh');
+            $table->string('bobot_uts');
+            $table->string('bobot_uas');
+            $table->string('bobot_proses');
+            $table->string('bobot_product');
+            $table->string('bobot_proyek');
+            $table->string('kd_admin');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
