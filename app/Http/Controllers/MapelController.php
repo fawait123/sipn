@@ -59,7 +59,8 @@ class MapelController extends Controller
      */
     public function edit(Mapel $mapel)
     {
-        //
+        $id = $mapel->kd_mapel;
+        return view('pages.mapel.form',compact('mapel','id'));
     }
 
     /**
@@ -71,7 +72,8 @@ class MapelController extends Controller
      */
     public function update(Request $request, Mapel $mapel)
     {
-        //
+        $mapel->update($request->all());
+        return redirect()->route('mapel.index')->with(['message'=>'Ubah data mapel berhasil']);
     }
 
     /**
@@ -82,6 +84,7 @@ class MapelController extends Controller
      */
     public function destroy(Mapel $mapel)
     {
-        //
+        $mapel->delete();
+        return redirect()->route('mapel.index')->with(['message'=>'Hapus data mapel berhasil']);
     }
 }
