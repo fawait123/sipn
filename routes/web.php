@@ -17,6 +17,6 @@ Route::get('/', function () {
 // route home
 Route::get('home',[HomeController::class,'index'])->name('home');
 // route admin
-Route::group(['prefix'=>'masterdata'],function(){
+Route::group(['prefix'=>'datamaster'],function(){
     Route::resource('guru',GuruController::class);
 });
