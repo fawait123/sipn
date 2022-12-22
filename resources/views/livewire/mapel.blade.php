@@ -41,7 +41,7 @@
                                                     class="icon ni ni-plus"></em></a>
                                             <a href="{{ route('mapel.create') }}"
                                                 class="btn btn-primary d-none d-md-inline-flex"><em
-                                                    class="icon ni ni-plus"></em><span>Add Product</span></a>
+                                                    class="icon ni ni-plus"></em><span>Tambah</span></a>
                                         </li>
                                     </ul>
                                 </div>
