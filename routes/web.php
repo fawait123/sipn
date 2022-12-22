@@ -6,6 +6,7 @@ use App\Http\Controllers\MapelController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\EkskulController;
+use App\Http\Controllers\AjaranController;
 use App\Http\Controllers\HomeController;
 
 
@@ -27,4 +28,5 @@ Route::group(['prefix'=>'datamaster'],function(){
     Route::resource('prodi',ProdiController::class);
     Route::resource('siswa',SiswaController::class);
     Route::resource('ekskul',EkskulController::class);
+    Route::resource('ajaran',AjaranController::class);
 });
