@@ -15,6 +15,12 @@
                     <h6 class="overline-title text-primary-alt">Data Master</h6>
                 </li><!-- .nk-menu-heading -->
                 <li class="nk-menu-item">
+                    <a href="{{ route('kepalasekolah.index') }}" class="nk-menu-link">
+                        <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
+                        <span class="nk-menu-text">Kepala Sekolah </span>
+                    </a>
+                </li><!-- .nk-menu-item -->
+                <li class="nk-menu-item">
                     <a href="{{ route('guru.index') }}" class="nk-menu-link">
                         <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
                         <span class="nk-menu-text">Guru </span>
