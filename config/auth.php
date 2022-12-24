@@ -40,7 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'pengguna' => [
+            'driver' => 'session',
+            'provider' => 'pengguna',
+        ],
     ],
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -62,7 +69,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Pengguna::class,
+        ],
+
+        'pengguna' => [
+            'driver' => 'database',
+            'table' => 'pengguna',
         ],
 
         // 'users' => [
