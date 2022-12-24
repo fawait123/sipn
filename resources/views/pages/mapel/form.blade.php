@@ -44,13 +44,22 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label" for="tingkat">Tingkat</label>
                                                     <div class="form-control-wrap">
-                                                        <input type="text" class="form-control"
-                                                            value="{{ isset($id) ? $mapel->tingkat : '' }}" id="tingkat"
-                                                            name="tingkat" required>
+                                                        <select name="tingkat" id="tingkat" class="form-control" required>
+                                                            <option value="">pilih</option>
+                                                            <option value="SD"
+                                                                {{ isset($id) ? ($mapel->tingkat == 'SD' ? 'selected' : '') : '' }}>
+                                                                SD</option>
+                                                            <option value="SMP"
+                                                                {{ isset($id) ? ($mapel->tingkat == 'SMP' ? 'selected' : '') : '' }}>
+                                                                SMP</option>
+                                                            <option value="SMA"
+                                                                {{ isset($id) ? ($mapel->tingkat == 'SMA' ? 'selected' : '') : '' }}>
+                                                                SMA</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>

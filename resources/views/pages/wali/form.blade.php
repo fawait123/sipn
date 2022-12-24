@@ -61,9 +61,18 @@
                                                 <div class="form-group">
                                                     <label class="form-label" for="tingkat">Tingkat</label>
                                                     <div class="form-control-wrap">
-                                                        <input type="text" class="form-control"
-                                                            value="{{ isset($id) ? $wali->tingkat : '' }}" id="tingkat"
-                                                            name="tingkat" required>
+                                                        <select name="tingkat" id="tingkat" class="form-control" required>
+                                                            <option value="">pilih</option>
+                                                            <option value="SD"
+                                                                {{ isset($id) ? ($wali->tingkat == 'SD' ? 'selected' : '') : '' }}>
+                                                                SD</option>
+                                                            <option value="SMP"
+                                                                {{ isset($id) ? ($wali->tingkat == 'SMP' ? 'selected' : '') : '' }}>
+                                                                SMP</option>
+                                                            <option value="SMA"
+                                                                {{ isset($id) ? ($wali->tingkat == 'SMA' ? 'selected' : '') : '' }}>
+                                                                SMA</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>

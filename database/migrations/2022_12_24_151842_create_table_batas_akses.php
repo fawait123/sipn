@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePenggunasTable extends Migration
+class CreateTableBatasAkses extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreatePenggunasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengguna', function (Blueprint $table) {
+        Schema::create('batas_akses', function (Blueprint $table) {
+            $table->string('kd_batas');
+            $table->date('tgl_login');
+            $table->date('tgl_logout');
             $table->string('kd_pengguna');
-            $table->string('nm_pengguna');
-            $table->string('username');
-            $table->string('password');
-            $table->enum('akses',['admin','wali','guru','siswa']);
-            $table->boolean('aktif')->default(true);
             $table->timestamps();
             $table->timestamp('deleted_at');
         });
@@ -32,6 +30,6 @@ class CreatePenggunasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penggunas');
+        Schema::dropIfExists('table_batas_akses');
     }
 }

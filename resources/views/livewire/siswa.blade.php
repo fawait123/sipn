@@ -56,7 +56,7 @@
                                 <div class="nk-tb-list">
                                     <div class="nk-tb-item nk-tb-head">
                                         <div class="nk-tb-col"><span>Kode siswa</span></div>
-                                        <div class="nk-tb-col"><span>NIP</span></div>
+                                        <div class="nk-tb-col"><span>NIS</span></div>
                                         <div class="nk-tb-col"><span>Nama siswa</span></div>
                                         <div class="nk-tb-col"><span>Tanggal Lahir</span></div>
                                         <div class="nk-tb-col"><span>Jenis Kelamin</span></div>
@@ -73,7 +73,7 @@
                                                     <span class="tb-sub">{{ $item->kd_siswa }}</span>
                                                 </div>
                                                 <div class="nk-tb-col">
-                                                    <span class="tb-sub">{{ $item->nip }}</span>
+                                                    <span class="tb-sub">{{ $item->nis }}</span>
                                                 </div>
                                                 <div class="nk-tb-col">
                                                     <span class="tb-lead">{{ $item->nm_siswa }}</span>

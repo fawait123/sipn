@@ -111,11 +111,20 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="fv-subject">Tingkat</label>
+                                                    <label class="form-label" for="tingkat">Tingkat</label>
                                                     <div class="form-control-wrap">
-                                                        <input type="text" class="form-control"
-                                                            value="{{ isset($id) ? $siswa->tingkat : '' }}" id="fv-subject"
-                                                            name="tingkat" required>
+                                                        <select name="tingkat" id="tingkat" class="form-control" required>
+                                                            <option value="">pilih</option>
+                                                            <option value="SD"
+                                                                {{ isset($id) ? ($siswa->tingkat == 'SD' ? 'selected' : '') : '' }}>
+                                                                SD</option>
+                                                            <option value="SMP"
+                                                                {{ isset($id) ? ($siswa->tingkat == 'SMP' ? 'selected' : '') : '' }}>
+                                                                SMP</option>
+                                                            <option value="SMA"
+                                                                {{ isset($id) ? ($siswa->tingkat == 'SMA' ? 'selected' : '') : '' }}>
+                                                                SMA</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
