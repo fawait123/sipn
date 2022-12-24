@@ -77,8 +77,10 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-md-block">
-                                                    <div class="user-status">Administrator</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                                                    <div class="user-status" style="text-transform: uppercase">
+                                                        {{ auth()->user()->akses }}</div>
+                                                    <div class="user-name dropdown-indicator">
+                                                        {{ auth()->user()->nm_pengguna }}</div>
                                                 </div>
                                             </div>
                                         </a>
@@ -89,8 +91,9 @@
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span
+                                                            class="lead-text">{{ auth()->user()->nm_pengguna }}</span>
+                                                        <span class="sub-text">{{ auth()->user()->username }}</span>
                                                     </div>
                                                 </div>
                                             </div>

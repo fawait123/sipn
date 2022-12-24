@@ -3,10 +3,10 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Guru as GuruModel;
+use App\Models\KepalaSekolah as KepalaSekolahModel;
 use Livewire\WithPagination;
 
-class Guru extends Component
+class Kepalasekolah extends Component
 {
     public $search = '';
     public $perPage = 10;
@@ -19,13 +19,13 @@ class Guru extends Component
 
     protected $paginationTheme = 'bootstrap';
 
+
     public function render()
     {
-        $query = GuruModel::query();
-        $query = $query->with('gurumapel.mapel');
-        $query = $query->where('nm_guru','like','%'.$this->search.'%');
+        $query = KepalaSekolahModel::query();
+        $query = $query->where('nm_kepsek','like','%'.$this->search.'%');
         $query = $query->paginate($this->perPage);
-        $count = GuruModel::count();
-        return view('livewire.guru',compact('query','count'));
+        $count = KepalaSekolahModel::count();
+        return view('livewire.kepalasekolah',compact('query','count'));
     }
 }

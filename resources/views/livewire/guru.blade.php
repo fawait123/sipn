@@ -63,7 +63,7 @@
                                         <div class="nk-tb-col"><span>Agama</span></div>
                                         <div class="nk-tb-col"><span>Alamat</span></div>
                                         <div class="nk-tb-col"><span>MataPelajaran</span></div>
-                                        <div class="nk-tb-col"><span>Tingkat</span></div>
+                                        {{-- <div class="nk-tb-col"><span>Tingkat</span></div> --}}
                                         <div class="nk-tb-col"><span>Aksi</span></div>
                                     </div><!-- .nk-tb-item -->
                                     @if (count($query) > 0)
@@ -91,11 +91,12 @@
                                                     <span class="tb-sub">{{ $item->alamat }}</span>
                                                 </div>
                                                 <div class="nk-tb-col">
-                                                    <span class="tb-sub">{{ $item->mapel->nm_mapel }}</span>
+                                                    <span class="tb-sub"><a href="#" data-bs-toggle="modal"
+                                                            data-bs-target="#modalZoom{{ $loop->iteration }}">Detail</a></span>
                                                 </div>
-                                                <div class="nk-tb-col">
+                                                {{-- <div class="nk-tb-col">
                                                     <span class="tb-sub">{{ $item->tingkat }}</span>
-                                                </div>
+                                                </div> --}}
                                                 <div class="nk-tb-col nk-tb-col-tools">
                                                     <ul class="nk-tb-actions gx-1 my-n1">
                                                         <li class="me-n1">
@@ -111,11 +112,12 @@
                                                                                     class="icon ni ni-edit"></em><span>Ubah</span></a>
                                                                         </li>
                                                                         {{-- <li><a href="#"><em
-                                                                                    class="icon ni ni-eye"></em><span>View
-                                                                                    Product</span></a></li>
-                                                                        <li><a href="#"><em
-                                                                                    class="icon ni ni-activity-round"></em><span>Product
-                                                                                    Orders</span></a></li> --}}
+                                                                                class="icon ni ni-eye"></em><span>View
+                                                                                Product</span></a></li> --}}
+                                                                        <li><a
+                                                                                href="{{ route('guru.mapel.form', $item->kd_guru) }}"><em
+                                                                                    class="icon ni ni-activity-round"></em><span>Tambah
+                                                                                    Mapel</span></a></li>
                                                                         <li><a href="{{ route('guru.destroy', $item->kd_guru) }}"
                                                                                 onclick="event.preventDefault(); document.getElementById('form-delete{{ $loop->iteration }}').submit()"><em
                                                                                     class="icon ni ni-trash"></em><span>Hapus</span></a>
@@ -135,6 +137,57 @@
                                                     </ul>
                                                 </div>
                                             </div><!-- .nk-tb-item -->
+
+                                            <!-- Modal Zoom -->
+                                            <div class="modal fade zoom" tabindex="-1"
+                                                id="modalZoom{{ $loop->iteration }}">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Mata Pelajaran
+                                                                {{ $item->nm_guru }}</h5>
+                                                            <a href="#" class="close" data-bs-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <em class="icon ni ni-cross"></em>
+                                                            </a>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">#</th>
+                                                                        <th scope="col">Matapelajaran</th>
+                                                                        <th scope="col">Tingkat</th>
+                                                                        {{-- <th scope="col">Aksi</th> --}}
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @if (count($item->gurumapel) > 0)
+                                                                        @foreach ($item->gurumapel as $row)
+                                                                            <tr>
+                                                                                <th scope="row">
+                                                                                    {{ $loop->iteration }}
+                                                                                </th>
+                                                                                <td>{{ $row->mapel->nm_mapel }}</td>
+                                                                                <td>{{ $row->tingkat }}</td>
+                                                                                {{-- <td>@mdo</td> --}}
+                                                                            </tr>
+                                                                        @endforeach
+                                                                    @else
+                                                                        <tr>
+                                                                            <td colspan="3" align="center">Tidak
+                                                                                ada data</td>
+                                                                        </tr>
+                                                                    @endif
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer bg-light">
+                                                            <span class="sub-text">Modal Footer Text</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endforeach
                                     @else
                                         <div class="nk-tb-col">

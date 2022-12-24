@@ -5,7 +5,7 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Mata Pelajaran</h3>
+                            <h3 class="nk-block-title page-title">kepalasekolah</h3>
                         </div><!-- .nk-block-head-content -->
                         <div class="nk-block-head-content">
                             <div class="toggle-wrap nk-block-tools-toggle">
@@ -39,7 +39,7 @@
                                         <li class="nk-block-tools-opt">
                                             <a href="#" class="btn btn-icon btn-primary d-md-none"><em
                                                     class="icon ni ni-plus"></em></a>
-                                            <a href="{{ route('siswa.create') }}"
+                                            <a href="{{ route('kepalasekolah.create') }}"
                                                 class="btn btn-primary d-none d-md-inline-flex"><em
                                                     class="icon ni ni-plus"></em><span>Tambah</span></a>
                                         </li>
@@ -55,47 +55,18 @@
                             <div class="card-inner p-0">
                                 <div class="nk-tb-list">
                                     <div class="nk-tb-item nk-tb-head">
-                                        <div class="nk-tb-col"><span>Kode siswa</span></div>
-                                        <div class="nk-tb-col"><span>NIS</span></div>
-                                        <div class="nk-tb-col"><span>Nama siswa</span></div>
-                                        <div class="nk-tb-col"><span>Tanggal Lahir</span></div>
-                                        <div class="nk-tb-col"><span>Jenis Kelamin</span></div>
-                                        <div class="nk-tb-col"><span>Agama</span></div>
-                                        <div class="nk-tb-col"><span>Alamat</span></div>
-                                        <div class="nk-tb-col"><span>Prodi</span></div>
-                                        <div class="nk-tb-col"><span>Tingkat</span></div>
+                                        <div class="nk-tb-col"><span>Kode kepalasekolah</span></div>
+                                        <div class="nk-tb-col"><span>Nama kepalasekolah</span></div>
                                         <div class="nk-tb-col"><span>Aksi</span></div>
                                     </div><!-- .nk-tb-item -->
                                     @if (count($query) > 0)
                                         @foreach ($query as $item)
                                             <div class="nk-tb-item">
                                                 <div class="nk-tb-col">
-                                                    <span class="tb-sub">{{ $item->kd_siswa }}</span>
+                                                    <span class="tb-sub">{{ $item->kd_kepsek }}</span>
                                                 </div>
                                                 <div class="nk-tb-col">
-                                                    <span class="tb-sub">{{ $item->nis }}</span>
-                                                </div>
-                                                <div class="nk-tb-col">
-                                                    <span class="tb-lead">{{ $item->nm_siswa }}</span>
-                                                </div>
-                                                <div class="nk-tb-col">
-                                                    <span class="tb-sub">{{ $item->tgl_lahir }}</span>
-                                                </div>
-                                                <div class="nk-tb-col">
-                                                    <span class="tb-sub">{{ $item->jk }}</span>
-                                                </div>
-                                                <div class="nk-tb-col">
-                                                    <span class="tb-sub">{{ $item->agama }}</span>
-                                                </div>
-                                                <div class="nk-tb-col">
-                                                    <span class="tb-sub">{{ $item->alamat }}</span>
-                                                </div>
-                                                <div class="nk-tb-col">
-                                                    <span
-                                                        class="tb-sub">{{ $item->prodi->kd_prodi . ' - ' . $item->prodi->kompetensi ?? '' }}</span>
-                                                </div>
-                                                <div class="nk-tb-col">
-                                                    <span class="tb-sub">{{ $item->tingkat }}</span>
+                                                    <span class="tb-sub">{{ $item->nm_kepsek }}</span>
                                                 </div>
                                                 <div class="nk-tb-col nk-tb-col-tools">
                                                     <ul class="nk-tb-actions gx-1 my-n1">
@@ -108,7 +79,7 @@
                                                                 <div class="dropdown-menu dropdown-menu-end">
                                                                     <ul class="link-list-opt no-bdr">
                                                                         <li><a
-                                                                                href="{{ route('siswa.edit', $item->kd_siswa) }}"><em
+                                                                                href="{{ route('kepalasekolah.edit', $item->kd_kepsek) }}"><em
                                                                                     class="icon ni ni-edit"></em><span>Ubah</span></a>
                                                                         </li>
                                                                         {{-- <li><a href="#"><em
@@ -117,13 +88,13 @@
                                                                         <li><a href="#"><em
                                                                                     class="icon ni ni-activity-round"></em><span>Product
                                                                                     Orders</span></a></li> --}}
-                                                                        <li><a href="{{ route('siswa.destroy', $item->kd_siswa) }}"
+                                                                        <li><a href="{{ route('kepalasekolah.destroy', $item->kd_kepsek) }}"
                                                                                 onclick="event.preventDefault(); document.getElementById('form-delete{{ $loop->iteration }}').submit()"><em
                                                                                     class="icon ni ni-trash"></em><span>Hapus</span></a>
                                                                         </li>
 
                                                                         <form
-                                                                            action="{{ route('siswa.destroy', $item->kd_siswa) }}"
+                                                                            action="{{ route('kepalasekolah.destroy', $item->kd_kepsek) }}"
                                                                             id="form-delete{{ $loop->iteration }}"
                                                                             method="POST">
                                                                             @csrf
