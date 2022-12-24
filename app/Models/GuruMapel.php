@@ -6,24 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Guru extends Model
+class GuruMapel extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $table = 'guru';
-    protected $primaryKey = 'kd_guru';
+    protected $table = 'guru_mapel';
+    protected $primaryKey = 'kd_gumap';
 
     protected $guarded = ['created_at','updated_at'];
 
     public function getRouteKeyName()
     {
-        return 'kd_guru';
+        return 'kd_gumap';
     }
 
     protected $keyType = 'string';
 
-
-    public function gurumapel()
+    public function mapel()
     {
-        return $this->hasMany(GuruMapel::class,'kd_guru');
+        return $this->belongsTo(Mapel::class,'kd_mapel');
     }
 }

@@ -23,6 +23,8 @@ Route::get('/', function () {
 Route::get('home',[HomeController::class,'index'])->name('home');
 // route admin
 Route::group(['prefix'=>'datamaster'],function(){
+    Route::get('guru/mapel/{kd_guru}',[GuruController::class,'gurMap'])->name('guru.mapel.form');
+    Route::post('guru/mapel/{kd_guru}',[GuruController::class,'mapel'])->name('guru.mapel.action');
     Route::resource('guru',GuruController::class);
     Route::resource('mapel',MapelController::class);
     Route::resource('prodi',ProdiController::class);

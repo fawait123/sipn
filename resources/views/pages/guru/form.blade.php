@@ -83,7 +83,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label" for="fv-topics">Agama</label>
                                                     <div class="form-control-wrap ">
@@ -109,7 +109,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="fv-subject">Tingkat</label>
                                                     <div class="form-control-wrap">
@@ -118,8 +118,8 @@
                                                             name="tingkat" required>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
+                                            </div> --}}
+                                            {{-- <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label" for="fv-topics">Kode Mata Pelajaran</label>
                                                     <div class="form-control-wrap ">
@@ -135,13 +135,12 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label" for="fv-message">Alamat</label>
                                                     <div class="form-control-wrap">
-                                                        <textarea class="form-control form-control-sm" id="fv-message" name="alamat" placeholder="Write your message"
-                                                            required>{{ isset($id) ? $guru->alamat : '' }}</textarea>
+                                                        <textarea class="form-control form-control-sm" id="fv-message" name="alamat" placeholder="Write your message" required>{{ isset($id) ? $guru->alamat : '' }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

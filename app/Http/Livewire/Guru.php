@@ -22,7 +22,7 @@ class Guru extends Component
     public function render()
     {
         $query = GuruModel::query();
-        $query = $query->with('mapel');
+        $query = $query->with('gurumapel.mapel');
         $query = $query->where('nm_guru','like','%'.$this->search.'%');
         $query = $query->paginate($this->perPage);
         $count = GuruModel::count();

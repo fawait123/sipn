@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\Mapel;
+use App\Models\GuruMapel;
 use Illuminate\Http\Request;
 use App\Helpers\AutoCode;
 
@@ -92,5 +93,23 @@ class GuruController extends Controller
     {
         $guru->delete();
         return redirect()->route('guru.index')->with(['message'=>'Hapus data guru berhasil']);
+    }
+
+
+    public function gurMap($id)
+    {
+        $guru = Guru::find($id);
+        $mapel = Mapel::all();
+        if($guru){
+            return view('pages.guru.mapel',compact('guru','mapel'));
+        }
+
+        return abort(404);
+    }
+
+    public function mapel(Request $request,$id)
+    {
+        GuruMapel::create(array_merge($request->all(),['kd_gumap'=>AutoCode::code('GRM'),'kd_guru'=>$id]));
+        return redirect()->route('guru.index')->with(['message'=>'Berhasil menambahkan data pelajaran']);
     }
 }
