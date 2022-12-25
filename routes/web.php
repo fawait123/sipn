@@ -9,6 +9,7 @@ use App\Http\Controllers\EkskulController;
 use App\Http\Controllers\KepalaSekolahController;
 use App\Http\Controllers\AjaranController;
 use App\Http\Controllers\WaliController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
@@ -35,4 +36,5 @@ Route::group(['prefix'=>'datamaster','middleware'=>'auth'],function(){
     Route::resource('ajaran',AjaranController::class);
     Route::resource('wali',WaliController::class);
     Route::resource('kepalasekolah',KepalaSekolahController::class);
+    Route::resource('pengguna',PenggunaController::class);
 });

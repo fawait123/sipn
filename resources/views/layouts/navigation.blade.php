@@ -15,6 +15,12 @@
                     <h6 class="overline-title text-primary-alt">Data Master</h6>
                 </li><!-- .nk-menu-heading -->
                 <li class="nk-menu-item">
+                    <a href="{{ route('pengguna.index') }}" class="nk-menu-link">
+                        <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
+                        <span class="nk-menu-text">Pengguna </span>
+                    </a>
+                </li><!-- .nk-menu-item -->
+                <li class="nk-menu-item">
                     <a href="{{ route('kepalasekolah.index') }}" class="nk-menu-link">
                         <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
                         <span class="nk-menu-text">Kepala Sekolah </span>
@@ -27,6 +33,12 @@
                     </a>
                 </li><!-- .nk-menu-item -->
                 <li class="nk-menu-item">
+                    <a href="{{ route('siswa.index') }}" class="nk-menu-link">
+                        <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
+                        <span class="nk-menu-text">Siswa </span>
+                    </a>
+                </li><!-- .nk-menu-item -->
+                <li class="nk-menu-item">
                     <a href="{{ route('mapel.index') }}" class="nk-menu-link">
                         <span class="nk-menu-icon"><em class="icon ni ni-grid-alt"></em></span>
                         <span class="nk-menu-text">Mapel </span>
@@ -36,12 +48,6 @@
                     <a href="{{ route('prodi.index') }}" class="nk-menu-link">
                         <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
                         <span class="nk-menu-text">Prodi </span>
-                    </a>
-                </li><!-- .nk-menu-item -->
-                <li class="nk-menu-item">
-                    <a href="{{ route('siswa.index') }}" class="nk-menu-link">
-                        <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
-                        <span class="nk-menu-text">Siswa </span>
                     </a>
                 </li><!-- .nk-menu-item -->
                 <li class="nk-menu-item">
