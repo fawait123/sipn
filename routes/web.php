@@ -10,6 +10,7 @@ use App\Http\Controllers\KepalaSekolahController;
 use App\Http\Controllers\AjaranController;
 use App\Http\Controllers\WaliController;
 use App\Http\Controllers\KeterampilanController;
+use App\Http\Controllers\PrakerinController;
 use App\Http\Controllers\PengetahuanController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\AuthController;
@@ -23,6 +24,7 @@ Route::get('/', function () {
 })->name('login');
 
 Route::post('/login',[AuthController::class,'login'])->name('login.action');
+Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 
 // route home
 Route::get('home',[HomeController::class,'index'])->name('home')->middleware('auth');
@@ -59,5 +61,15 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
         Route::post('/store',[PengetahuanController::class,'store'])->name('pengetahuan.store');
         Route::get('/edit/{pengetahuan}',[PengetahuanController::class,'edit'])->name('pengetahuan.edit');
         Route::put('/update/{pengetahuan}',[PengetahuanController::class,'update'])->name('pengetahuan.update');
+    });
+    // prakerin
+    Route::group(['prefix'=>'prakerin'],function(){
+        Route::get('/',[PrakerinController::class,'index'])->name('prakerin.index');
+        Route::get('/wali',[PrakerinController::class,'wali'])->name('prakerin.wali');
+        Route::get('/create',[PrakerinController::class,'create'])->name('prakerin.create');
+        Route::post('/store',[PrakerinController::class,'store'])->name('prakerin.store');
+        Route::get('/edit/{prakerin}',[PrakerinController::class,'edit'])->name('prakerin.edit');
+        Route::put('/update/{prakerin}',[PrakerinController::class,'update'])->name('prakerin.update');
+        Route::put('/destroy/{prakerin}',[PrakerinController::class,'destroy'])->name('prakerin.destroy');
     });
 });

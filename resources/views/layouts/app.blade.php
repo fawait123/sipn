@@ -115,8 +115,14 @@
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign
+                                                    <li><a href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault(); document.getElementById('form-logout').submit();"><em
+                                                                class="icon ni ni-signout"></em><span>Sign
                                                                 out</span></a></li>
+                                                    <form action="{{ route('logout') }}" method="POST"
+                                                        id="form-logout">
+                                                        @csrf
+                                                    </form>
                                                 </ul>
                                             </div>
                                         </div>

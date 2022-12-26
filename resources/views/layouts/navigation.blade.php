@@ -92,7 +92,7 @@
                         <h6 class="overline-title text-primary-alt">Data Nilai / Wali</h6>
                     </li><!-- .nk-menu-heading -->
                     <li class="nk-menu-item">
-                        <a href="{{ route('pengguna.index') }}" class="nk-menu-link">
+                        <a href="{{ route('prakerin.wali') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
                             <span class="nk-menu-text">Nilai Prakerin </span>
                         </a>
