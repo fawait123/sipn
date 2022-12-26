@@ -70,7 +70,7 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                 @endif
-                @if (auth()->user()->akses == 'guru')
+                @if (auth()->user()->akses == 'guru' || auth()->user()->akses == 'admin')
                     <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Data Nilai</h6>
                     </li><!-- .nk-menu-heading -->

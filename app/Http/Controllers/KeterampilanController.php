@@ -125,7 +125,12 @@ class KeterampilanController extends Controller
 
     public function mapel()
     {
-        $guru = Guru::with('gurumapel.mapel')->where('nip',auth()->user()->username)->first();
+        $guru = Guru::query();
+        if(auth()->user()->akses == 'guru'){
+            $guru = $guru->where('nip',auth()->user()->username);
+        }
+        $guru = $guru->with('gurumapel.mapel');
+        $guru = $guru->get();
         return view('pages.keterampilan.mapel',compact('guru'));
     }
 }
