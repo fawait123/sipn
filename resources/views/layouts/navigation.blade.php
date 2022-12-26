@@ -98,7 +98,7 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="{{ route('pengguna.index') }}" class="nk-menu-link">
+                        <a href="{{ route('absen.wali') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
                             <span class="nk-menu-text">Nilai Absen </span>
                         </a>

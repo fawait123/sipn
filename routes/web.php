@@ -10,6 +10,7 @@ use App\Http\Controllers\KepalaSekolahController;
 use App\Http\Controllers\AjaranController;
 use App\Http\Controllers\WaliController;
 use App\Http\Controllers\KeterampilanController;
+use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\PrakerinController;
 use App\Http\Controllers\PengetahuanController;
 use App\Http\Controllers\PenggunaController;
@@ -65,11 +66,21 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     // prakerin
     Route::group(['prefix'=>'prakerin'],function(){
         Route::get('/',[PrakerinController::class,'index'])->name('prakerin.index');
-        Route::get('/wali',[PrakerinController::class,'wali'])->name('prakerin.wali');
+        Route::get('/siswa',[PrakerinController::class,'wali'])->name('prakerin.wali');
         Route::get('/create',[PrakerinController::class,'create'])->name('prakerin.create');
         Route::post('/store',[PrakerinController::class,'store'])->name('prakerin.store');
         Route::get('/edit/{prakerin}',[PrakerinController::class,'edit'])->name('prakerin.edit');
         Route::put('/update/{prakerin}',[PrakerinController::class,'update'])->name('prakerin.update');
         Route::put('/destroy/{prakerin}',[PrakerinController::class,'destroy'])->name('prakerin.destroy');
+    });
+    // absen
+    Route::group(['prefix'=>'absen'],function(){
+        Route::get('/',[AbsenController::class,'index'])->name('absen.index');
+        Route::get('/siswa',[AbsenController::class,'wali'])->name('absen.wali');
+        Route::get('/create',[AbsenController::class,'create'])->name('absen.create');
+        Route::post('/store',[AbsenController::class,'store'])->name('absen.store');
+        Route::get('/edit/{absen}',[AbsenController::class,'edit'])->name('absen.edit');
+        Route::put('/update/{absen}',[AbsenController::class,'update'])->name('absen.update');
+        Route::put('/destroy/{absen}',[AbsenController::class,'destroy'])->name('absen.destroy');
     });
 });
