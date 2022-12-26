@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Keterampilan;
 use App\Models\Guru;
 use App\Models\Siswa;
+use App\Models\Ajaran;
 use Illuminate\Http\Request;
+use App\Helpers\AutoCode;
 
 class KeterampilanController extends Controller
 {
@@ -16,7 +18,7 @@ class KeterampilanController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.keterampilan.index');
     }
 
     /**
@@ -27,7 +29,10 @@ class KeterampilanController extends Controller
     public function create(Request $request)
     {
         $siswa = Siswa::where('tingkat',$request->tingkat)->get();
-        dd($siswa);
+        $tingkat = $request->tingkat;
+        $mapel = $request->mapel;
+        $ajaran = Ajaran::all();
+        return view('pages.keterampilan.form',compact('siswa','tingkat','mapel','ajaran'));
     }
 
     /**
@@ -38,7 +43,29 @@ class KeterampilanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proses = $request->proses;
+        $produk = $request->produk;
+        $proyek = $request->proyek;
+        $siswa = $request->kd_siswa;
+        $deskripsi_k = $request->deskripsi_k;
+        $guru = Guru::where('nip',auth()->user()->username)->first();
+        for ($i=0; $i < count($siswa); $i++) {
+            Keterampilan::create([
+                'kd_mapel'=>$request->kd_mapel,
+                'tingkat'=>$request->tingkat,
+                'semester'=>$request->semester,
+                'kd_tahun'=>$request->kd_tahun,
+                'kd_siswa'=>$siswa[$i],
+                'produk'=>$produk[$i],
+                'proyek'=>$proyek[$i],
+                'proses'=>$proses[$i],
+                'deskripsi_k'=>$deskripsi_k[$i],
+                'kd_guru'=>$guru->kd_guru,
+                'kd_nk'=>AutoCode::code('NK')
+            ]);
+        }
+
+        return redirect()->route('keterampilan.mapel')->with(['message'=>'Data nilai keterampilan berhasil ditambah']);
     }
 
     /**
@@ -60,7 +87,8 @@ class KeterampilanController extends Controller
      */
     public function edit(Keterampilan $keterampilan)
     {
-        //
+        $ajaran = Ajaran::all();
+        return view('pages.keterampilan.edit', compact('keterampilan','ajaran'));
     }
 
     /**
@@ -72,7 +100,8 @@ class KeterampilanController extends Controller
      */
     public function update(Request $request, Keterampilan $keterampilan)
     {
-        //
+        $keterampilan->update($request->all());
+        return redirect()->route('keterampilan.mapel')->with(['message'=>'Ubah nilai keterampilan berhasil']);
     }
 
     /**
@@ -83,7 +112,8 @@ class KeterampilanController extends Controller
      */
     public function destroy(Keterampilan $keterampilan)
     {
-        //
+        $keterampilan->delete();
+        return redirect()->route('keterampilan.mapel')->with(['message'=>'Hapus nilai keterampilan berhasil']);
     }
 
 

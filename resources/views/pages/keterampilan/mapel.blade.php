@@ -60,7 +60,8 @@
                                             <div class="card-inner">
                                                 <div class="project">
                                                     <div class="project-head">
-                                                        <a href="html/apps-kanban.html" class="project-title">
+                                                        <a href="{{ route('keterampilan.index') }}?kd_mapel={{ $item->kd_mapel }}"
+                                                            class="project-title">
                                                             <div class="user-avatar sq bg-purple">
                                                                 <span>{{ $item->tingkat }}</span>
                                                             </div>
@@ -76,7 +77,8 @@
                                                                     class="icon ni ni-more-h"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <ul class="link-list-opt no-bdr">
-                                                                    <li><a href="html/apps-kanban.html"><em
+                                                                    <li><a
+                                                                            href="{{ route('keterampilan.index') }}?kd_mapel={{ $item->kd_mapel }}"><em
                                                                                 class="icon ni ni-eye"></em><span>Lihat
                                                                                 Nilai</span></a></li>
                                                                     <li><a

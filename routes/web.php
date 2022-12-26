@@ -40,9 +40,13 @@ Route::group(['prefix'=>'datamaster','middleware'=>'auth'],function(){
     Route::resource('pengguna',PenggunaController::class);
 });
 
-Route::group(['prefix'=>'nilai'],function(){
+Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     Route::group(['prefix'=>'keterampilan'],function(){
+        Route::get('/',[KeterampilanController::class,'index'])->name('keterampilan.index');
         Route::get('/mapel',[KeterampilanController::class,'mapel'])->name('keterampilan.mapel');
         Route::get('/create',[KeterampilanController::class,'create'])->name('keterampilan.create');
+        Route::post('/store',[KeterampilanController::class,'store'])->name('keterampilan.store');
+        Route::get('/edit/{keterampilan}',[KeterampilanController::class,'edit'])->name('keterampilan.edit');
+        Route::put('/update/{keterampilan}',[KeterampilanController::class,'update'])->name('keterampilan.update');
     });
 });

@@ -420,6 +420,7 @@
     <script src="{{ asset('assets') }}/assets/js/bundle.js?ver=3.1.1"></script>
     <script src="{{ asset('assets') }}/assets/js/scripts.js?ver=3.1.1"></script>
     <script src="{{ asset('assets') }}/assets/js/charts/gd-default.js?ver=3.1.1"></script>
+    @stack('customjs')
 </body>
 
 </html>
