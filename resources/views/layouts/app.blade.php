@@ -115,8 +115,14 @@
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign
+                                                    <li><a href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault(); document.getElementById('form-logout').submit();"><em
+                                                                class="icon ni ni-signout"></em><span>Sign
                                                                 out</span></a></li>
+                                                    <form action="{{ route('logout') }}" method="POST"
+                                                        id="form-logout">
+                                                        @csrf
+                                                    </form>
                                                 </ul>
                                             </div>
                                         </div>
@@ -420,6 +426,7 @@
     <script src="{{ asset('assets') }}/assets/js/bundle.js?ver=3.1.1"></script>
     <script src="{{ asset('assets') }}/assets/js/scripts.js?ver=3.1.1"></script>
     <script src="{{ asset('assets') }}/assets/js/charts/gd-default.js?ver=3.1.1"></script>
+    @stack('customjs')
 </body>
 
 </html>

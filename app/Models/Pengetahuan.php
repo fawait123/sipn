@@ -6,17 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Keterampilan extends Model
+class Pengetahuan extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $table = 'nilai_keterampilan';
-    protected $primaryKey = 'kd_nk';
+
+    protected $table = 'nilai_pengetahuan';
+    protected $primaryKey = 'kd_np';
 
     protected $guarded = ['created_at','updated_at'];
 
     public function getRouteKeyName()
     {
-        return 'kd_nk';
+        return 'kd_np';
     }
 
     protected $keyType = 'string';

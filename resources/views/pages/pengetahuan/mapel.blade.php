@@ -62,7 +62,7 @@
                                                 <div class="card-inner">
                                                     <div class="project">
                                                         <div class="project-head">
-                                                            <a href="{{ route('keterampilan.index') }}?kd_mapel={{ $item->kd_mapel }}"
+                                                            <a href="{{ route('pengetahuan.index') }}?kd_mapel={{ $item->kd_mapel }}"
                                                                 class="project-title">
                                                                 <div class="user-avatar sq bg-purple">
                                                                     <span>{{ $item->tingkat }}</span>
@@ -80,12 +80,12 @@
                                                                 <div class="dropdown-menu dropdown-menu-end">
                                                                     <ul class="link-list-opt no-bdr">
                                                                         <li><a
-                                                                                href="{{ route('keterampilan.index') }}?kd_mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}"><em
+                                                                                href="{{ route('pengetahuan.index') }}?kd_mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}"><em
                                                                                     class="icon ni ni-eye"></em><span>Lihat
                                                                                     Nilai</span></a></li>
                                                                         @if (auth()->user()->akses == 'guru')
                                                                             <li><a
-                                                                                    href="{{ route('keterampilan.create') }}?mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}"><em
+                                                                                    href="{{ route('pengetahuan.create') }}?mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}"><em
                                                                                         class="icon ni ni-edit"></em><span>Tambah
                                                                                         Nilai</span></a></li>
                                                                         @endif

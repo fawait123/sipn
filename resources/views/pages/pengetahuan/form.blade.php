@@ -9,10 +9,10 @@
                     <div class="components-preview wide-md mx-auto">
                         <div class="nk-block-head nk-block-head-lg wide-sm">
                             <div class="nk-block-head-content">
-                                <div class="nk-block-head-sub"><a class="back-to" href="{{ route('keterampilan.mapel') }}"><em
+                                <div class="nk-block-head-sub"><a class="back-to" href="{{ route('pengetahuan.mapel') }}"><em
                                             class="icon ni ni-arrow-left"></em><span>Form</span></a></div>
                                 <h2 class="nk-block-title fw-normal">{{ isset($id) ? 'Ubah' : 'Tambah' }} Data Nilai
-                                    keterampilan
+                                    pengetahuan
                                 </h2>
                             </div>
                         </div><!-- .nk-block-head -->
@@ -20,7 +20,7 @@
                             <div class="card card-bordered">
                                 <div class="card-inner">
                                     <form
-                                        action="{{ isset($id) ? route('keterampilan.update', $id) : route('keterampilan.store') }}"
+                                        action="{{ isset($id) ? route('pengetahuan.update', $id) : route('pengetahuan.store') }}"
                                         method="POST" class="form-validate">
                                         @csrf
                                         @if (isset($id))
@@ -105,28 +105,28 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="proses">Proses</label>
+                                                        <label class="form-label" for="harian">Harian</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="proses"
-                                                                name="proses[{{ $no++ }}]" required>
+                                                            <input type="text" class="form-control" id="harian"
+                                                                name="harian[{{ $no++ }}]" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="produk">Produk</label>
+                                                        <label class="form-label" for="uts">UTS</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="produk"
-                                                                name="produk[{{ $no1++ }}]" required>
+                                                            <input type="text" class="form-control" id="uts"
+                                                                name="uts[{{ $no1++ }}]" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="proyek">Proyek</label>
+                                                        <label class="form-label" for="uas">UAS</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="proyek"
-                                                                name="proyek[{{ $no2++ }}]" required>
+                                                            <input type="text" class="form-control" id="uas"
+                                                                name="uas[{{ $no2++ }}]" required>
                                                         </div>
                                                     </div>
                                                 </div>

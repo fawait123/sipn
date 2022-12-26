@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Keterampilan;
+use App\Models\pengetahuan;
 use App\Models\Guru;
 use App\Models\Siswa;
 use App\Models\Ajaran;
 use Illuminate\Http\Request;
 use App\Helpers\AutoCode;
 
-class KeterampilanController extends Controller
+class PengetahuanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class KeterampilanController extends Controller
      */
     public function index()
     {
-        return view('pages.keterampilan.index');
+        return view('pages.pengetahuan.index');
     }
 
     /**
@@ -32,7 +32,7 @@ class KeterampilanController extends Controller
         $tingkat = $request->tingkat;
         $mapel = $request->mapel;
         $ajaran = Ajaran::all();
-        return view('pages.keterampilan.form',compact('siswa','tingkat','mapel','ajaran'));
+        return view('pages.pengetahuan.form',compact('siswa','tingkat','mapel','ajaran'));
     }
 
     /**
@@ -43,38 +43,38 @@ class KeterampilanController extends Controller
      */
     public function store(Request $request)
     {
-        $proses = $request->proses;
-        $produk = $request->produk;
-        $proyek = $request->proyek;
+        $harian = $request->harian;
+        $uts = $request->uts;
+        $uas = $request->uas;
         $siswa = $request->kd_siswa;
         $deskripsi_k = $request->deskripsi_k;
         $guru = Guru::where('nip',auth()->user()->username)->first();
         for ($i=0; $i < count($siswa); $i++) {
-            Keterampilan::create([
+            pengetahuan::create([
                 'kd_mapel'=>$request->kd_mapel,
                 'tingkat'=>$request->tingkat,
                 'semester'=>$request->semester,
                 'kd_tahun'=>$request->kd_tahun,
                 'kd_siswa'=>$siswa[$i],
-                'produk'=>$produk[$i],
-                'proyek'=>$proyek[$i],
-                'proses'=>$proses[$i],
+                'harian'=>$harian[$i],
+                'uts'=>$uts[$i],
+                'uas'=>$uas[$i],
                 'deskripsi_k'=>$deskripsi_k[$i],
                 'kd_guru'=>$guru->kd_guru,
-                'kd_nk'=>AutoCode::code('NK')
+                'kd_np'=>AutoCode::code('NK')
             ]);
         }
 
-        return redirect()->route('keterampilan.mapel')->with(['message'=>'Data nilai keterampilan berhasil ditambah']);
+        return redirect()->route('pengetahuan.mapel')->with(['message'=>'Data nilai pengetahuan berhasil ditambah']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Keterampilan  $keterampilan
+     * @param  \App\Models\pengetahuan  $pengetahuan
      * @return \Illuminate\Http\Response
      */
-    public function show(Keterampilan $keterampilan)
+    public function show(pengetahuan $pengetahuan)
     {
         //
     }
@@ -82,38 +82,38 @@ class KeterampilanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Keterampilan  $keterampilan
+     * @param  \App\Models\pengetahuan  $pengetahuan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Keterampilan $keterampilan)
+    public function edit(pengetahuan $pengetahuan)
     {
         $ajaran = Ajaran::all();
-        return view('pages.keterampilan.edit', compact('keterampilan','ajaran'));
+        return view('pages.pengetahuan.edit', compact('pengetahuan','ajaran'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Keterampilan  $keterampilan
+     * @param  \App\Models\pengetahuan  $pengetahuan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Keterampilan $keterampilan)
+    public function update(Request $request, pengetahuan $pengetahuan)
     {
-        $keterampilan->update($request->all());
-        return redirect()->route('keterampilan.mapel')->with(['message'=>'Ubah nilai keterampilan berhasil']);
+        $pengetahuan->update($request->all());
+        return redirect()->route('pengetahuan.mapel')->with(['message'=>'Ubah nilai pengetahuan berhasil']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Keterampilan  $keterampilan
+     * @param  \App\Models\pengetahuan  $pengetahuan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Keterampilan $keterampilan)
+    public function destroy(pengetahuan $pengetahuan)
     {
-        $keterampilan->delete();
-        return redirect()->route('keterampilan.mapel')->with(['message'=>'Hapus nilai keterampilan berhasil']);
+        $pengetahuan->delete();
+        return redirect()->route('pengetahuan.mapel')->with(['message'=>'Hapus nilai pengetahuan berhasil']);
     }
 
 
@@ -131,6 +131,6 @@ class KeterampilanController extends Controller
         }
         $guru = $guru->with('gurumapel.mapel');
         $guru = $guru->get();
-        return view('pages.keterampilan.mapel',compact('guru'));
+        return view('pages.pengetahuan.mapel',compact('guru'));
     }
 }

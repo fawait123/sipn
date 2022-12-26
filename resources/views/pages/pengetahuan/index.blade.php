@@ -2,5 +2,5 @@
 
 
 @section('content')
-    <livewire:keterampilan />
+    <livewire:pengetahuan />
 @endsection
