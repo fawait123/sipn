@@ -15,6 +15,7 @@ use App\Http\Controllers\PrakerinController;
 use App\Http\Controllers\SikapController;
 use App\Http\Controllers\PengetahuanController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\CatatanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
@@ -93,5 +94,15 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
         Route::get('/edit/{sikap}',[SikapController::class,'edit'])->name('sikap.edit');
         Route::put('/update/{sikap}',[SikapController::class,'update'])->name('sikap.update');
         Route::put('/destroy/{sikap}',[SikapController::class,'destroy'])->name('sikap.destroy');
+    });
+    // catatatn
+    Route::group(['prefix'=>'catatan'],function(){
+        Route::get('/',[CatatanController::class,'index'])->name('catatan.index');
+        Route::get('/siswa',[CatatanController::class,'wali'])->name('catatan.wali');
+        Route::get('/create',[CatatanController::class,'create'])->name('catatan.create');
+        Route::post('/store',[CatatanController::class,'store'])->name('catatan.store');
+        Route::get('/edit/{catatan}',[CatatanController::class,'edit'])->name('catatan.edit');
+        Route::put('/update/{catatan}',[CatatanController::class,'update'])->name('catatan.update');
+        Route::put('/destroy/{catatan}',[CatatanController::class,'destroy'])->name('catatan.destroy');
     });
 });

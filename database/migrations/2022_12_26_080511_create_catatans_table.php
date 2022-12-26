@@ -13,9 +13,16 @@ class CreateCatatansTable extends Migration
      */
     public function up()
     {
-        Schema::create('catatans', function (Blueprint $table) {
-            $table->id();
+        Schema::create('nilai_catatan', function (Blueprint $table) {
+            $table->string('kd_cat');
+            $table->string('kd_siswa');
+            $table->string('kd_tahun');
+            $table->string('tingkat');
+            $table->string('semester');
+            $table->string('catatan');
+            $table->string('kd_wali');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
