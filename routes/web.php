@@ -10,6 +10,7 @@ use App\Http\Controllers\KepalaSekolahController;
 use App\Http\Controllers\AjaranController;
 use App\Http\Controllers\WaliController;
 use App\Http\Controllers\KeterampilanController;
+use App\Http\Controllers\PengetahuanController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -41,6 +42,7 @@ Route::group(['prefix'=>'datamaster','middleware'=>'auth'],function(){
 });
 
 Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
+    // keterampilan
     Route::group(['prefix'=>'keterampilan'],function(){
         Route::get('/',[KeterampilanController::class,'index'])->name('keterampilan.index');
         Route::get('/mapel',[KeterampilanController::class,'mapel'])->name('keterampilan.mapel');
@@ -48,5 +50,14 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
         Route::post('/store',[KeterampilanController::class,'store'])->name('keterampilan.store');
         Route::get('/edit/{keterampilan}',[KeterampilanController::class,'edit'])->name('keterampilan.edit');
         Route::put('/update/{keterampilan}',[KeterampilanController::class,'update'])->name('keterampilan.update');
+    });
+    // pengetahuan
+    Route::group(['prefix'=>'pengetahuan'],function(){
+        Route::get('/',[PengetahuanController::class,'index'])->name('pengetahuan.index');
+        Route::get('/mapel',[PengetahuanController::class,'mapel'])->name('pengetahuan.mapel');
+        Route::get('/create',[PengetahuanController::class,'create'])->name('pengetahuan.create');
+        Route::post('/store',[PengetahuanController::class,'store'])->name('pengetahuan.store');
+        Route::get('/edit/{pengetahuan}',[PengetahuanController::class,'edit'])->name('pengetahuan.edit');
+        Route::put('/update/{pengetahuan}',[PengetahuanController::class,'update'])->name('pengetahuan.update');
     });
 });

@@ -72,7 +72,7 @@
                 @endif
                 @if (auth()->user()->akses == 'guru' || auth()->user()->akses == 'admin')
                     <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">Data Nilai</h6>
+                        <h6 class="overline-title text-primary-alt">Data Nilai / Guru</h6>
                     </li><!-- .nk-menu-heading -->
                     <li class="nk-menu-item">
                         <a href="{{ route('keterampilan.mapel') }}" class="nk-menu-link">
@@ -81,22 +81,22 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="{{ route('pengguna.index') }}" class="nk-menu-link">
+                        <a href="{{ route('pengetahuan.mapel') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
                             <span class="nk-menu-text">Nilai Pengetahuan </span>
                         </a>
                     </li><!-- .nk-menu-item -->
+                @endif
+                @if (auth()->user()->akses == 'wali' || auth()->user()->akses == 'admin')
+                    <li class="nk-menu-heading">
+                        <h6 class="overline-title text-primary-alt">Data Nilai / Wali</h6>
+                    </li><!-- .nk-menu-heading -->
                     <li class="nk-menu-item">
                         <a href="{{ route('pengguna.index') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
                             <span class="nk-menu-text">Nilai Prakerin </span>
                         </a>
                     </li><!-- .nk-menu-item -->
-                @endif
-                @if (auth()->user()->akses == 'wali')
-                    <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">Data Nilai</h6>
-                    </li><!-- .nk-menu-heading -->
                     <li class="nk-menu-item">
                         <a href="{{ route('pengguna.index') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>

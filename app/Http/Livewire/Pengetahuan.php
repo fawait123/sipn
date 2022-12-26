@@ -3,14 +3,15 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Keterampilan as KeterampilanModel;
+use App\Models\Pengetahuan as PengetahuanModel;
 use Livewire\WithPagination;
 
-class Keterampilan extends Component
+class Pengetahuan extends Component
 {
     public $search = '';
     public $kd_mapel = '';
     public $perPage = 10;
+
     use WithPagination;
 
     public function updatingSearch()
@@ -28,7 +29,7 @@ class Keterampilan extends Component
 
     public function render()
     {
-        $query = KeterampilanModel::query();
+        $query = PengetahuanModel::query();
         $query = $query->with(['mapel','siswa','ajaran']);
         if($this->search != '')
         {
@@ -36,7 +37,7 @@ class Keterampilan extends Component
         }
         $query = $query->where('kd_mapel',request('kd_mapel'))->where('tingkat','like',request('tingkat'));
         $query = $query->paginate($this->perPage);
-        $count = KeterampilanModel::count();
-        return view('livewire.keterampilan',compact('query','count'));
+        $count = PengetahuanModel::count();
+        return view('livewire.pengetahuan',compact('query','count'));
     }
 }
