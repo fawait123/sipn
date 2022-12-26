@@ -13,6 +13,7 @@ use App\Http\Controllers\KeterampilanController;
 use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\PrakerinController;
 use App\Http\Controllers\SikapController;
+use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\PengetahuanController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\CatatanController;
@@ -104,5 +105,15 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
         Route::get('/edit/{catatan}',[CatatanController::class,'edit'])->name('catatan.edit');
         Route::put('/update/{catatan}',[CatatanController::class,'update'])->name('catatan.update');
         Route::put('/destroy/{catatan}',[CatatanController::class,'destroy'])->name('catatan.destroy');
+    });
+    // ekstrakurikuler
+    Route::group(['prefix'=>'ekstrakurikuler'],function(){
+        Route::get('/',[EkstrakurikulerController::class,'index'])->name('ekstrakurikuler.index');
+        Route::get('/siswa',[EkstrakurikulerController::class,'wali'])->name('ekstrakurikuler.wali');
+        Route::get('/create',[EkstrakurikulerController::class,'create'])->name('ekstrakurikuler.create');
+        Route::post('/store',[EkstrakurikulerController::class,'store'])->name('ekstrakurikuler.store');
+        Route::get('/edit/{ekstrakurikuler}',[EkstrakurikulerController::class,'edit'])->name('ekstrakurikuler.edit');
+        Route::put('/update/{ekstrakurikuler}',[EkstrakurikulerController::class,'update'])->name('ekstrakurikuler.update');
+        Route::put('/destroy/{ekstrakurikuler}',[EkstrakurikulerController::class,'destroy'])->name('ekstrakurikuler.destroy');
     });
 });
