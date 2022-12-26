@@ -12,6 +12,7 @@ use App\Http\Controllers\WaliController;
 use App\Http\Controllers\KeterampilanController;
 use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\PrakerinController;
+use App\Http\Controllers\SikapController;
 use App\Http\Controllers\PengetahuanController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\AuthController;
@@ -82,5 +83,15 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
         Route::get('/edit/{absen}',[AbsenController::class,'edit'])->name('absen.edit');
         Route::put('/update/{absen}',[AbsenController::class,'update'])->name('absen.update');
         Route::put('/destroy/{absen}',[AbsenController::class,'destroy'])->name('absen.destroy');
+    });
+    // sikap
+    Route::group(['prefix'=>'sikap'],function(){
+        Route::get('/',[SikapController::class,'index'])->name('sikap.index');
+        Route::get('/siswa',[SikapController::class,'wali'])->name('sikap.wali');
+        Route::get('/create',[SikapController::class,'create'])->name('sikap.create');
+        Route::post('/store',[SikapController::class,'store'])->name('sikap.store');
+        Route::get('/edit/{sikap}',[SikapController::class,'edit'])->name('sikap.edit');
+        Route::put('/update/{sikap}',[SikapController::class,'update'])->name('sikap.update');
+        Route::put('/destroy/{sikap}',[SikapController::class,'destroy'])->name('sikap.destroy');
     });
 });

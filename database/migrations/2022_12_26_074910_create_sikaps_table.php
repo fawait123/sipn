@@ -13,9 +13,16 @@ class CreateSikapsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sikaps', function (Blueprint $table) {
-            $table->id();
+        Schema::create('nilai_sikap', function (Blueprint $table) {
+            $table->string('kd_nsikap');
+            $table->string('kd_siswa');
+            $table->string('kd_tahun');
+            $table->string('tingkat');
+            $table->string('semester');
+            $table->string('sikap');
+            $table->string('kd_wali');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
