@@ -122,6 +122,17 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                 @endif
+                @if (auth()->user()->akses == 'siswa')
+                    <li class="nk-menu-heading">
+                        <h6 class="overline-title text-primary-alt">Rekap Nilai</h6>
+                    </li><!-- .nk-menu-heading -->
+                    <li class="nk-menu-item">
+                        <a href="{{ route('siswa.nilai.index') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
+                            <span class="nk-menu-text">Nilai Prakerin </span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
+                @endif
             </ul><!-- .nk-menu -->
         </div><!-- .nk-sidebar-menu -->
     </div><!-- .nk-sidebar-content -->
