@@ -9,6 +9,7 @@ use App\Models\Keterampilan;
 use App\Models\Siswa;
 use App\Models\Sikap;
 use App\Models\Catatan;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class NilaiController extends Controller
 {
@@ -28,6 +29,9 @@ class NilaiController extends Controller
         $sikap = sikap::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
         $catatan = catatan::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
         $semester = 'genap';
-        return view('pages.nilai.download',compact('isShow','siswa','pengetahuan','keterampilan','prakerin','catatan','semester'));
+        // return view('pages.nilai.download',compact('isShow','siswa','pengetahuan','keterampilan','prakerin','catatan','semester'));
+
+        $pdf = Pdf::loadView('pages.nilai.download',compact('isShow','siswa','pengetahuan','keterampilan','prakerin','catatan','semester'));
+        return $pdf->download('rekap-nilai.pdf');
     }
 }

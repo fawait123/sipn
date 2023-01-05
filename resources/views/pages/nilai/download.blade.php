@@ -70,7 +70,7 @@
                         <td>{{ $loop->iteration }}.</td>
                         <td>&nbsp;&nbsp;&nbsp;{{ $item->mapel->nm_mapel ?? '' }}</td>
                         <td>{{ ($item->harian + $item->uts + $item->uas) / 3 }}</td>
-                        <td>{{ grade(($item->harian + $item->uts + $item->uas) / 3) }}</td>
+                        <td>{{ ($item->harian + $item->uts + $item->uas) / 3 }}</td>
                     </tr>
                 @endforeach
                 <tr>
@@ -86,7 +86,7 @@
                         <td>{{ $loop->iteration }}.</td>
                         <td>&nbsp;&nbsp;&nbsp;{{ $item->mapel->nm_mapel ?? '' }}</td>
                         <td>{{ ($item->proyek + $item->proses + $item->produk) / 3 }}</td>
-                        <td>{{ grade(($item->proyek + $item->proses + $item->produk) / 3) }}
+                        <td>{{ ($item->proyek + $item->proses + $item->produk) / 3 }}
                         </td>
                     </tr>
                 @endforeach
@@ -104,7 +104,7 @@
                             <td>{{ $loop->iteration }}.</td>
                             <td>&nbsp;&nbsp;&nbsp;{{ $item->lokasi ?? '' }}</td>
                             <td>{{ $item->nm_du_di }}</td>
-                            <td>{{ grade($item->nm_du_di) }}
+                            <td>{{ $item->nm_du_di }}
                             </td>
                         </tr>
                     @endforeach
@@ -128,7 +128,7 @@
                             <td>{{ $loop->iteration }}.</td>
                             <td>&nbsp;&nbsp;&nbsp;{{ $item->lokasi ?? 'Sikap' }}</td>
                             <td>{{ $item->sikap }}</td>
-                            <td>{{ grade($item->sikap) }}
+                            <td>{{ $item->sikap }}
                             </td>
                         </tr>
                     @endforeach
@@ -152,7 +152,7 @@
                             <td>{{ $loop->iteration }}.</td>
                             <td>&nbsp;&nbsp;&nbsp;{{ $item->lokasi ?? 'Catatan' }}</td>
                             <td>{{ $item->catatan }}</td>
-                            <td>{{ grade($item->catatan) }}
+                            <td>{{ $item->catatan }}
                             </td>
                         </tr>
                     @endforeach
@@ -187,22 +187,3 @@
 </body>
 
 </html>
-@php
-    function grade($nilai)
-    {
-        switch ($nilai) {
-            case $nilai > 70 && $nilai <= 100:
-                return 'Baik';
-                break;
-            case $nilai > 50 && $nilai <= 70:
-                return 'Cukup Baik';
-                break;
-            case $nilai > 40 && $nilai <= 50:
-                return 'Cukup';
-                break;
-            default:
-                return 'Kurang Baik';
-                break;
-        }
-    }
-@endphp

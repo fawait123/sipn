@@ -9,6 +9,7 @@ use App\Models\Keterampilan;
 use App\Models\Siswa;
 use App\Models\Sikap;
 use App\Models\Catatan;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class Nilai extends Component
 {
@@ -32,5 +33,19 @@ class Nilai extends Component
     {
         $this->semester = $data['semester'];
         $this->isShow = true;
+    }
+
+    public function download()
+    {
+        $isShow = $this->isShow;
+        $siswa = Siswa::with('prodi')->where('nis',auth()->user()->kode)->first();
+        $pengetahuan = Pengetahuan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        $keterampilan = keterampilan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        $prakerin = prakerin::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        $sikap = sikap::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        $catatan = catatan::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        $semester = $this->semester;
+        $pdf = Pdf::loadView('pages.nilai.download',compact('isShow','siswa','pengetahuan','keterampilan','prakerin','catatan','semester'));
+        return $pdf->download('rekap-nilai.pdf');
     }
 }
