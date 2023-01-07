@@ -33,7 +33,7 @@
                                                     {{-- <button wire:click="download"
                                                         class="btn btn-primary d-none d-md-inline-flex"><em
                                                             class="icon ni ni-download"></em><span>Download</span></button> --}}
-                                                    <a href="{{ route('siswa.nilai.download') }}"
+                                                    <a href="{{ route('siswa.nilai.download') }}?semester={{$semester}}"
                                                         class="btn btn-primary d-none d-md-inline-flex"><em
                                                             class="icon ni ni-download"></em><span>Download</span></a>
                                                 @endif

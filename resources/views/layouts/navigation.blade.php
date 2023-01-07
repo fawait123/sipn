@@ -129,7 +129,7 @@
                     <li class="nk-menu-item">
                         <a href="{{ route('siswa.nilai.index') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
-                            <span class="nk-menu-text">Nilai Prakerin </span>
+                            <span class="nk-menu-text">Rekap Nilai </span>
                         </a>
                     </li><!-- .nk-menu-item -->
                 @endif

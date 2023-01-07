@@ -98,7 +98,7 @@
                                                 </div>
                                             </div>
                                             <div class="dropdown-inner">
-                                                <ul class="link-list">
+                                                {{-- <ul class="link-list">
                                                     <li><a href="html/user-profile-regular.html"><em
                                                                 class="icon ni ni-user-alt"></em><span>View
                                                                 Profile</span></a></li>
@@ -111,7 +111,7 @@
                                                     <li><a class="dark-switch" href="#"><em
                                                                 class="icon ni ni-moon"></em><span>Dark Mode</span></a>
                                                     </li>
-                                                </ul>
+                                                </ul> --}}
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
@@ -130,8 +130,8 @@
                                     <li class="dropdown notification-dropdown me-n1">
                                         <a href="#" class="dropdown-toggle nk-quick-nav-icon"
                                             data-bs-toggle="dropdown">
-                                            <div class="icon-status icon-status-info"><em
-                                                    class="icon ni ni-bell"></em></div>
+                                            <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em>
+                                            </div>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end dropdown-menu-s1">
                                             <div class="dropdown-head">

@@ -11,6 +11,12 @@
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style>
+        thead>tr>th,
+        thead>tr>td {
+            padding: 10px
+        }
+    </style>
 </head>
 
 <body>
@@ -43,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <table class="table-bordered" width="100%" style="margin-top: 120px;">
+        <table border="1" width="100%" style="margin-top: 120px;">
             <thead>
                 <tr>
                     <th width="5%">NO</th>
