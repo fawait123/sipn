@@ -18,6 +18,7 @@ use App\Http\Controllers\PengetahuanController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\CatatanController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\HomeController;
 
 
@@ -116,4 +117,11 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
         Route::put('/update/{ekstrakurikuler}',[EkstrakurikulerController::class,'update'])->name('ekstrakurikuler.update');
         Route::put('/destroy/{ekstrakurikuler}',[EkstrakurikulerController::class,'destroy'])->name('ekstrakurikuler.destroy');
     });
+});
+
+
+// nilai siswa
+Route::group(['prefix'=>'siswa'],function(){
+    Route::get('nilai',[NilaiController::class,'index'])->name('siswa.nilai.index');
+    Route::get('nilai/download',[NilaiController::class,'download'])->name('siswa.nilai.download');
 });
