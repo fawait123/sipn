@@ -31,7 +31,7 @@ class NilaiController extends Controller
         $semester = 'genap';
         // return view('pages.nilai.download',compact('isShow','siswa','pengetahuan','keterampilan','prakerin','catatan','semester'));
 
-        $pdf = Pdf::loadView('pages.nilai.download',compact('isShow','siswa','pengetahuan','keterampilan','prakerin','catatan','semester'));
+        $pdf = Pdf::loadView('pages.nilai.download',compact('isShow','siswa','pengetahuan','keterampilan','prakerin','catatan','semester'))->setPaper('A4');
         return $pdf->download('rekap-nilai.pdf');
     }
 }

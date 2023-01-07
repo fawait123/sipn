@@ -15,35 +15,35 @@
 
 <body>
     <div class="container">
-        <div class="row mb-5">
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-6">
-                        <p>Nama Peserta Didik</p>
-                        <p>Bidang Studi Keahlian</p>
+        <div class="row mb-5" style="position: relative;">
+            <div class="col-6" style="position: absolute; top: 0; left: 0;">
+                <div class="row" style="position: relative;">
+                    <div class="col-6" style="position: absolute; top: 0; left: 0;">
+                        <p>Nama</p>
+                        <p>Keahlian</p>
                         <p>Tahun Ajaran</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6" style="position: absolute; top: 0; right: 0;">
                         <p>: {{ $siswa->nm_siswa }}</p>
                         <p>: {{ $siswa->prodi->kompetensi }}</p>
                         <p>: {{ date('Y') }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-6">
+            <div class="col-6" style="position: absolute; top: 0; right: 0;">
+                <div class="row" style="position: relative">
+                    <div class="col-6" style="position: absolute; top: 0; left: 0;">
                         <p>NIS/NISN</p>
                         <p>Semester</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6" style="position: absolute; top: 0; right: 0;">
                         <p>: {{ $siswa->nis }}</p>
                         <p>: {{ $semester }}</p>
                     </div>
                 </div>
             </div>
         </div>
-        <table class="table table-bordered">
+        <table class="table-bordered" width="100%" style="margin-top: 120px;">
             <thead>
                 <tr>
                     <th width="5%">NO</th>

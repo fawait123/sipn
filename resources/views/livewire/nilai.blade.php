@@ -29,13 +29,13 @@
                                             <li class="nk-block-tools-opt">
                                                 <a href="#" class="btn btn-icon btn-primary d-md-none"><em
                                                         class="icon ni ni-plus"></em></a>
-                                                {{-- <a href="{{ route('siswa.nilai.download') }}"
-                                                    class="btn btn-primary d-none d-md-inline-flex"><em
-                                                        class="icon ni ni-download"></em><span>Download</span></a> --}}
                                                 @if ($isShow)
-                                                    <button wire:click="download"
+                                                    {{-- <button wire:click="download"
                                                         class="btn btn-primary d-none d-md-inline-flex"><em
-                                                            class="icon ni ni-download"></em><span>Download</span></button>
+                                                            class="icon ni ni-download"></em><span>Download</span></button> --}}
+                                                    <a href="{{ route('siswa.nilai.download') }}"
+                                                        class="btn btn-primary d-none d-md-inline-flex"><em
+                                                            class="icon ni ni-download"></em><span>Download</span></a>
                                                 @endif
                                             </li>
                                         </ul>
