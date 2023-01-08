@@ -19,8 +19,9 @@
                         <div class="nk-block nk-block-lg">
                             <div class="card card-bordered">
                                 <div class="card-inner">
-                                    <form action="{{ route('guru.mapel.action', $guru->kd_guru) }}" method="POST"
-                                        class="form-validate">
+                                    <form
+                                        action="{{ isset($id) ? route('guru.mapel.update', $id) : route('guru.mapel.action', $guru->kd_guru) }}"
+                                        method="POST" class="form-validate">
                                         @csrf
                                         @if (isset($id))
                                             @method('put')
@@ -32,20 +33,41 @@
                                                     <select name="kd_mapel" id="kd_mapel" class="form-control" required>
                                                         <option value="">pilih</option>
                                                         @foreach ($mapel as $item)
-                                                            <option value="{{ $item->kd_mapel }}">{{ $item->nm_mapel }}
+                                                            <option value="{{ $item->kd_mapel }}"
+                                                                {{ isset($id) ? ($guru->kd_mapel == $item->kd_mapel ? 'selected' : '') : '' }}>
+                                                                {{ $item->nm_mapel }}
                                                             </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="tingkat">Tingkatan</label>
                                                     <select name="tingkat" id="tingkat" class="form-control" required>
                                                         <option value="">pilih</option>
-                                                        <option value="SD">SD</option>
-                                                        <option value="SMP">SMP</option>
-                                                        <option value="SMA">SMA</option>
+                                                        <option value="SD"
+                                                            {{ isset($id) ? ($guru->tingkat == 'SD' ? 'selected' : '') : '' }}>
+                                                            SD
+                                                        </option>
+                                                        <option value="SMP"
+                                                            {{ isset($id) ? ($guru->tingkat == 'SMP' ? 'selected' : '') : '' }}>
+                                                            SMP</option>
+                                                        <option value="SMA"
+                                                            {{ isset($id) ? ($guru->tingkat == 'SMA' ? 'selected' : '') : '' }}>
+                                                            SMA</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="kelas">Kelas</label>
+                                                    <select name="kelas" id="kelas" class="form-control" required>
+                                                        <option value="">pilih</option>
+                                                        @for ($i = 1; $i < 7; $i++)
+                                                            <option value="{{ $i }}">{{ $i }}
+                                                            </option>
+                                                        @endfor
                                                     </select>
                                                 </div>
                                             </div>
@@ -67,3 +89,41 @@
     </div>
     <!-- content @e -->
 @endsection
+
+@push('customjs')
+    <script>
+        function getKelas(kelas) {
+            let id = '{{ isset($id) ? $guru->kelas : null }}'
+            let option = '<option value="">pilih</option>'
+            if (kelas === 'SD') {
+                for (let i = 1; i < 7; i++) {
+                    option += `
+                        <option value="${i}" ${id == i ? 'selected':''}>${i}</option>
+                    `
+                }
+            } else if (kelas === 'SMP' || kelas === 'SMA') {
+                for (let i = 1; i < 4; i++) {
+                    option += `
+                        <option value="${i}" ${id == i ? 'selected':''}>${i}</option>
+                    `
+                }
+            } else {
+                for (let i = 1; i < 7; i++) {
+                    option += `
+                        <option value="${i}" ${id == i ? 'selected':''}>${i}</option>
+                    `
+                }
+            }
+            $("#kelas").html(option);
+        }
+        $(document).ready(function() {
+            $("#tingkat").on('change', function() {
+                let val = $(this).val()
+                getKelas(val)
+            })
+
+            let kelas = $("#tingkat").find(':selected').val()
+            getKelas(kelas)
+        })
+    </script>
+@endpush

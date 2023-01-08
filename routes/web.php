@@ -36,7 +36,10 @@ Route::get('home',[HomeController::class,'index'])->name('home')->middleware('au
 // route admin
 Route::group(['prefix'=>'datamaster','middleware'=>'auth'],function(){
     Route::get('guru/mapel/{kd_guru}',[GuruController::class,'gurMap'])->name('guru.mapel.form');
+    Route::get('guru/mapel/edit/{kd_gumap}',[GuruController::class,'gurMapEdit'])->name('guru.mapel.edit');
     Route::post('guru/mapel/{kd_guru}',[GuruController::class,'mapel'])->name('guru.mapel.action');
+    Route::put('guru/mapel/update/{gurmap}',[GuruController::class,'mapelUpdate'])->name('guru.mapel.update');
+    Route::delete('guru/mapel/delete/{gurmap}',[GuruController::class,'mapelDelete'])->name('guru.mapel.delete');
     Route::resource('guru',GuruController::class);
     Route::resource('mapel',MapelController::class);
     Route::resource('prodi',ProdiController::class);
