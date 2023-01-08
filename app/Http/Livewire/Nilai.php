@@ -15,6 +15,8 @@ class Nilai extends Component
 {
     protected $isShow = false;
     protected $semester = 'ganjil';
+    protected $kelas = 1;
+    protected $tingkat = 'SD';
     public function render()
     {
         $isShow = $this->isShow;
@@ -32,6 +34,8 @@ class Nilai extends Component
     public function show($data)
     {
         $this->semester = $data['semester'];
+        $this->kelas = $data['kelas'];
+        $this->tingkat = $data['tingkat'];
         $this->isShow = true;
     }
 
