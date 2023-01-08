@@ -8,8 +8,10 @@ use Livewire\WithPagination;
 
 class Keterampilan extends Component
 {
-    public $search = '';
+    public $search='';
     public $kd_mapel = '';
+    public $tingkat = '';
+    public $kelas = '';
     public $perPage = 10;
     use WithPagination;
 
@@ -22,7 +24,9 @@ class Keterampilan extends Component
 
     protected $queryString = [
         'search',
-        'kd_mapel'
+        'kd_mapel',
+        'tingkat',
+        'kelas'
     ];
 
 
@@ -30,11 +34,13 @@ class Keterampilan extends Component
     {
         $query = KeterampilanModel::query();
         $query = $query->with(['mapel','siswa','ajaran']);
+        $query = $query->where('kd_mapel',$this->kd_mapel)->where('tingkat','like',$this->tingkat)->where('kelas',$this->kelas);
         if($this->search != '')
         {
-            $query = $query->where('tingkat','like','%'.$this->search.'%');
+            $query = $query->whereHas('siswa',function($qr){
+                $qr->where('nm_siswa','like','%'.$this->search.'%');
+            });
         }
-        $query = $query->where('kd_mapel',request('kd_mapel'))->where('tingkat','like',request('tingkat'));
         $query = $query->paginate($this->perPage);
         $count = KeterampilanModel::count();
         return view('livewire.keterampilan',compact('query','count'));

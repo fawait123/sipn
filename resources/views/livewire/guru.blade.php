@@ -158,7 +158,8 @@
                                                                         <th scope="col">#</th>
                                                                         <th scope="col">Matapelajaran</th>
                                                                         <th scope="col">Tingkat</th>
-                                                                        {{-- <th scope="col">Aksi</th> --}}
+                                                                        <th scope="col">Kelas</th>
+                                                                        <th scope="col">Aksi</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -170,7 +171,21 @@
                                                                                 </th>
                                                                                 <td>{{ $row->mapel->nm_mapel }}</td>
                                                                                 <td>{{ $row->tingkat }}</td>
-                                                                                {{-- <td>@mdo</td> --}}
+                                                                                <td>{{ $row->kelas }}</td>
+                                                                                <td>
+                                                                                    <a
+                                                                                        href="{{ route('guru.mapel.edit', $row->kd_gumap) }}">edit</a>
+                                                                                    <a href="{{ route('guru.mapel.delete', $row->kd_gumap) }}"
+                                                                                        class="text-danger"
+                                                                                        onclick="event.preventDefault(); document.getElementById('form-delete-mapel{{ $loop->iteration }}').submit(); ">hapus</a>
+                                                                                    <form
+                                                                                        action="{{ route('guru.mapel.delete', $row->kd_gumap) }}"
+                                                                                        id="form-delete-mapel{{ $loop->iteration }}"
+                                                                                        method="post">
+                                                                                        @csrf
+                                                                                        @method('delete')
+                                                                                    </form>
+                                                                                </td>
                                                                             </tr>
                                                                         @endforeach
                                                                     @else

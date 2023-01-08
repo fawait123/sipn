@@ -36,7 +36,10 @@ Route::get('home',[HomeController::class,'index'])->name('home')->middleware('au
 // route admin
 Route::group(['prefix'=>'datamaster','middleware'=>'auth'],function(){
     Route::get('guru/mapel/{kd_guru}',[GuruController::class,'gurMap'])->name('guru.mapel.form');
+    Route::get('guru/mapel/edit/{kd_gumap}',[GuruController::class,'gurMapEdit'])->name('guru.mapel.edit');
     Route::post('guru/mapel/{kd_guru}',[GuruController::class,'mapel'])->name('guru.mapel.action');
+    Route::put('guru/mapel/update/{gurmap}',[GuruController::class,'mapelUpdate'])->name('guru.mapel.update');
+    Route::delete('guru/mapel/delete/{gurmap}',[GuruController::class,'mapelDelete'])->name('guru.mapel.delete');
     Route::resource('guru',GuruController::class);
     Route::resource('mapel',MapelController::class);
     Route::resource('prodi',ProdiController::class);
@@ -69,6 +72,7 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     });
     // prakerin
     Route::group(['prefix'=>'prakerin'],function(){
+        Route::post('/bulk',[PrakerinController::class,'bulk'])->name('prakerin.bulk');
         Route::get('/',[PrakerinController::class,'index'])->name('prakerin.index');
         Route::get('/siswa',[PrakerinController::class,'wali'])->name('prakerin.wali');
         Route::get('/create',[PrakerinController::class,'create'])->name('prakerin.create');
@@ -79,6 +83,7 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     });
     // absen
     Route::group(['prefix'=>'absen'],function(){
+        Route::post('/bulk',[AbsenController::class,'bulk'])->name('absen.bulk');
         Route::get('/',[AbsenController::class,'index'])->name('absen.index');
         Route::get('/siswa',[AbsenController::class,'wali'])->name('absen.wali');
         Route::get('/create',[AbsenController::class,'create'])->name('absen.create');
@@ -89,6 +94,7 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     });
     // sikap
     Route::group(['prefix'=>'sikap'],function(){
+        Route::post('/bulk',[SikapController::class,'bulk'])->name('sikap.bulk');
         Route::get('/',[SikapController::class,'index'])->name('sikap.index');
         Route::get('/siswa',[SikapController::class,'wali'])->name('sikap.wali');
         Route::get('/create',[SikapController::class,'create'])->name('sikap.create');
@@ -99,6 +105,7 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     });
     // catatatn
     Route::group(['prefix'=>'catatan'],function(){
+        Route::post('/bulk',[CatatanController::class,'bulk'])->name('catatan.bulk');
         Route::get('/',[CatatanController::class,'index'])->name('catatan.index');
         Route::get('/siswa',[CatatanController::class,'wali'])->name('catatan.wali');
         Route::get('/create',[CatatanController::class,'create'])->name('catatan.create');
@@ -109,6 +116,7 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     });
     // ekstrakurikuler
     Route::group(['prefix'=>'ekstrakurikuler'],function(){
+        Route::post('/bulk',[EkstrakurikulerController::class,'bulk'])->name('ekstrakurikuler.bulk');
         Route::get('/',[EkstrakurikulerController::class,'index'])->name('ekstrakurikuler.index');
         Route::get('/siswa',[EkstrakurikulerController::class,'wali'])->name('ekstrakurikuler.wali');
         Route::get('/create',[EkstrakurikulerController::class,'create'])->name('ekstrakurikuler.create');

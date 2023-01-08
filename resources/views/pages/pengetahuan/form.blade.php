@@ -37,12 +37,22 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="tingkat">Tingkat</label>
                                                     <div class="form-control-wrap">
                                                         <input type="text" class="form-control"
                                                             value="{{ $tingkat }}" id="tingkat" name="tingkat"
+                                                            required readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="kelas">Kelas</label>
+                                                    <div class="form-control-wrap">
+                                                        <input type="text" class="form-control"
+                                                            value="{{ $kelas }}" id="kelas" name="kelas"
                                                             required readonly>
                                                     </div>
                                                 </div>

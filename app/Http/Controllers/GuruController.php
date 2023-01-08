@@ -107,9 +107,33 @@ class GuruController extends Controller
         return abort(404);
     }
 
+
+    public function gurMapEdit($id)
+    {
+        $guru = GuruMapel::find($id);
+        $mapel = Mapel::all();
+        if($guru){
+            return view('pages.guru.mapel',compact('guru','mapel','id'));
+        }
+
+        return abort(404);
+    }
+
     public function mapel(Request $request,$id)
     {
         GuruMapel::create(array_merge($request->all(),['kd_gumap'=>AutoCode::code('GRM'),'kd_guru'=>$id]));
         return redirect()->route('guru.index')->with(['message'=>'Berhasil menambahkan data pelajaran']);
+    }
+
+    public function mapelUpdate(Request $request,GuruMapel $gurmap)
+    {
+        $gurmap->update($request->all());
+        return redirect()->route('guru.index')->with(['message'=>'Ubah data matapelajaran guru berhasil']);
+    }
+
+    public function mapelDelete(GuruMapel $gurmap)
+    {
+        $gurmap->delete();
+        return redirect()->route('guru.index')->with(['message'=>'Hapus data matapelajaran guru berhasil']);
     }
 }

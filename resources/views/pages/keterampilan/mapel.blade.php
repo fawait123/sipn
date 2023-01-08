@@ -23,7 +23,7 @@
                                                 data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
                                             <div class="toggle-expand-content" data-content="pageMenu">
                                                 <ul class="nk-block-tools g-3">
-                                                    <li>
+                                                    {{-- <li>
                                                         <div class="drodown">
                                                             <a href="#"
                                                                 class="dropdown-toggle btn btn-white btn-dim btn-outline-light"
@@ -39,11 +39,14 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                    <li class="nk-block-tools-opt d-none d-sm-block">
-                                                        <a href="#" class="btn btn-primary"><em
-                                                                class="icon ni ni-plus"></em><span>Add Project</span></a>
-                                                    </li>
+                                                    </li> --}}
+                                                    @if (auth()->user()->akses == 'guru')
+                                                        <li class="nk-block-tools-opt d-none d-sm-block">
+                                                            <a href="{{ route('keterampilan.create') }}"
+                                                                class="btn btn-primary"><em
+                                                                    class="icon ni ni-plus"></em><span>Tambah Nilai</span></a>
+                                                        </li>
+                                                    @endif
                                                     <li class="nk-block-tools-opt d-block d-sm-none">
                                                         <a href="#" class="btn btn-icon btn-primary"><em
                                                                 class="icon ni ni-plus"></em></a>
@@ -80,12 +83,12 @@
                                                                 <div class="dropdown-menu dropdown-menu-end">
                                                                     <ul class="link-list-opt no-bdr">
                                                                         <li><a
-                                                                                href="{{ route('keterampilan.index') }}?kd_mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}"><em
+                                                                                href="{{ route('keterampilan.index') }}?kd_mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}&kelas={{ $item->kelas }}"><em
                                                                                     class="icon ni ni-eye"></em><span>Lihat
                                                                                     Nilai</span></a></li>
                                                                         @if (auth()->user()->akses == 'guru')
                                                                             <li><a
-                                                                                    href="{{ route('keterampilan.create') }}?mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}"><em
+                                                                                    href="{{ route('keterampilan.create') }}?mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}&kelas={{ $item->kelas }}"><em
                                                                                         class="icon ni ni-edit"></em><span>Tambah
                                                                                         Nilai</span></a></li>
                                                                         @endif
@@ -100,7 +103,7 @@
                                                             <p>{{ $item->nm_guru }} kamu mengampuh
                                                                 {{ $item->mapel->nm_mapel }} di
                                                                 tingkat
-                                                                {{ $item->tingkat }}</p>
+                                                                {{ $item->tingkat }} kelas {{ $item->kelas }}</p>
                                                         </div>
                                                         <div class="project-meta">
                                                             <span class="badge badge-dim bg-warning"><em

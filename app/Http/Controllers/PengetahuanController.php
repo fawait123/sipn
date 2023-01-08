@@ -28,11 +28,15 @@ class PengetahuanController extends Controller
      */
     public function create(Request $request)
     {
-        $siswa = Siswa::where('tingkat',$request->tingkat)->get();
-        $tingkat = $request->tingkat;
-        $mapel = $request->mapel;
-        $ajaran = Ajaran::all();
-        return view('pages.pengetahuan.form',compact('siswa','tingkat','mapel','ajaran'));
+        if($request->filled('tingkat') && $request->filled('kelas') && $request->filled('mapel')){
+            $siswa = Siswa::where('tingkat',$request->tingkat)->where('kelas',$request->kelas)->get();
+            $tingkat = $request->tingkat;
+            $mapel = $request->mapel;
+            $kelas = $request->kelas;
+            $ajaran = Ajaran::all();
+            return view('pages.pengetahuan.form',compact('siswa','tingkat','mapel','ajaran','kelas'));
+        }
+        return view('pages.pengetahuan.create');
     }
 
     /**
@@ -53,6 +57,7 @@ class PengetahuanController extends Controller
             pengetahuan::create([
                 'kd_mapel'=>$request->kd_mapel,
                 'tingkat'=>$request->tingkat,
+                'kelas'=>$request->kelas,
                 'semester'=>$request->semester,
                 'kd_tahun'=>$request->kd_tahun,
                 'kd_siswa'=>$siswa[$i],

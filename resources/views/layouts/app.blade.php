@@ -15,6 +15,15 @@
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('assets') }}/assets/css/dashlite.css?ver=3.1.1">
     <link id="skin-default" rel="stylesheet" href="{{ asset('assets') }}/assets/css/theme.css?ver=3.1.1">
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+
     @livewireStyles
     <style>
         .active-menu {
@@ -130,7 +139,8 @@
                                     <li class="dropdown notification-dropdown me-n1">
                                         <a href="#" class="dropdown-toggle nk-quick-nav-icon"
                                             data-bs-toggle="dropdown">
-                                            <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em>
+                                            <div class="icon-status icon-status-info"><em
+                                                    class="icon ni ni-bell"></em>
                                             </div>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end dropdown-menu-s1">
@@ -421,12 +431,53 @@
             </div><!-- .modal-content -->
         </div><!-- .modla-dialog -->
     </div><!-- .modal -->
+
+    {{-- toastr --}}
+    {{-- <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto text-primary">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div> --}}
+    {{-- end --}}
     <!-- JavaScript -->
     @livewireScripts
     <script src="{{ asset('assets') }}/assets/js/bundle.js?ver=3.1.1"></script>
     <script src="{{ asset('assets') }}/assets/js/scripts.js?ver=3.1.1"></script>
     <script src="{{ asset('assets') }}/assets/js/charts/gd-default.js?ver=3.1.1"></script>
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     @stack('customjs')
+    @if ($message = Session::get('message'))
+        <script>
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.notify('{{ $message }}');
+        </script>
+    @endif
+    @if ($message = Session::get('success'))
+        <script>
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.notify('{{ $message }}');
+        </script>
+    @endif
+    @if ($message = Session::get('error'))
+        <script>
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.error('{{ $message }}');
+        </script>
+    @endif
+    @if ($message = Session::get('warning'))
+        <script>
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.warning('{{ $message }}');
+        </script>
+    @endif
 </body>
 
 </html>

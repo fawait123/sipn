@@ -17,6 +17,7 @@
                             @php
                                 $siswa = Siswa::where('tingkat', $row->tingkat)
                                     ->where('kd_prodi', $row->kd_prodi)
+                                    ->where('kelas', $row->kelas)
                                     ->get();
                             @endphp
                             <div class="nk-block-head nk-block-head-sm">
@@ -33,7 +34,7 @@
                                                 data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
                                             <div class="toggle-expand-content" data-content="pageMenu">
                                                 <ul class="nk-block-tools g-3">
-                                                    <li>
+                                                    {{-- <li>
                                                         <div class="drodown">
                                                             <a href="#"
                                                                 class="dropdown-toggle btn btn-white btn-dim btn-outline-light"
@@ -49,11 +50,13 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                    <li class="nk-block-tools-opt d-none d-sm-block">
-                                                        <a href="#" class="btn btn-primary"><em
-                                                                class="icon ni ni-plus"></em><span>Add Project</span></a>
-                                                    </li>
+                                                    </li> --}}
+                                                    @if (auth()->user()->akses == 'wali')
+                                                        <li class="nk-block-tools-opt d-none d-sm-block">
+                                                            <a href="{{ route('prakerin.create') }}" class="btn btn-primary"><em
+                                                                    class="icon ni ni-plus"></em><span>Tambah Nilai</span></a>
+                                                        </li>
+                                                    @endif
                                                     <li class="nk-block-tools-opt d-block d-sm-none">
                                                         <a href="#" class="btn btn-icon btn-primary"><em
                                                                 class="icon ni ni-plus"></em></a>
@@ -70,6 +73,7 @@
                                         @php
                                             $prakerin = Prakerin::where('kd_siswa', $item->kd_siswa)
                                                 ->where('tingkat', $item->tingkat)
+                                                ->where('kelas', $item->kelas)
                                                 ->get();
                                         @endphp
                                         <div class="col-sm-6 col-lg-4 col-xxl-3">
@@ -77,14 +81,15 @@
                                                 <div class="card-inner">
                                                     <div class="project">
                                                         <div class="project-head">
-                                                            <a href="{{ route('prakerin.index') }}?kd_mapel={{ $item->kd_siswa }}"
+                                                            <a href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#modalZoom{{ $no }}"
                                                                 class="project-title">
                                                                 <div class="user-avatar sq bg-purple">
                                                                     <span>{{ $item->tingkat }}</span>
                                                                 </div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">{{ $item->nm_siswa }}</h6>
-                                                                    <span class="sub-text">{{ $item->tingkat }}</span>
+                                                                    <span class="sub-text">Kelas {{ $item->kelas }}</span>
                                                                 </div>
                                                             </a>
                                                             <div class="drodown">
@@ -115,7 +120,7 @@
                                                             <p>{{ $row->guru->nm_guru }} kamu mempunyai siswa didik
                                                                 {{ $item->nm_siswa }} di
                                                                 tingkat
-                                                                {{ $item->tingkat }}</p>
+                                                                {{ $item->tingkat }} kelas {{ $item->kelas }}</p>
                                                         </div>
                                                         <div class="project-meta">
                                                             <span class="badge badge-dim bg-warning"><em

@@ -1,7 +1,4 @@
-@extends('layouts.app')
-
-
-@section('content')
+<div>
     <div class="nk-content ">
         <div class="container-fluid">
             <div class="nk-content-inner">
@@ -9,18 +6,17 @@
                     <div class="components-preview wide-md mx-auto">
                         <div class="nk-block-head nk-block-head-lg wide-sm">
                             <div class="nk-block-head-content">
-                                <div class="nk-block-head-sub"><a class="back-to" href="{{ route('keterampilan.mapel') }}"><em
+                                <div class="nk-block-head-sub"><a class="back-to" href="{{ route('absen.wali') }}"><em
                                             class="icon ni ni-arrow-left"></em><span>Form</span></a></div>
                                 <h2 class="nk-block-title fw-normal">{{ isset($id) ? 'Ubah' : 'Tambah' }} Data Nilai
-                                    keterampilan
+                                    absen
                                 </h2>
                             </div>
                         </div><!-- .nk-block-head -->
                         <div class="nk-block nk-block-lg">
                             <div class="card card-bordered">
                                 <div class="card-inner">
-                                    <form
-                                        action="{{ isset($id) ? route('keterampilan.update', $id) : route('keterampilan.store') }}"
+                                    <form action="{{ isset($id) ? route('absen.update', $id) : route('absen.bulk') }}"
                                         method="POST" class="form-validate">
                                         @csrf
                                         @if (isset($id))
@@ -29,48 +25,43 @@
                                         <div class="row g-gs">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="kd_mapel">Kode Mapel</label>
-                                                    <div class="form-control-wrap">
-                                                        <input type="text" class="form-control"
-                                                            value="{{ $mapel }}" id="kd_mapel" name="kd_mapel"
-                                                            required readonly>
-                                                    </div>
+                                                    <label class="form-label" for="kd_wali">Kode Wali</label>
+                                                    <input type="text" name="kd_wali" value="{{ $kd_wali }}"
+                                                        class="form-control" readonly required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="tingkat">Tingkat</label>
-                                                    <div class="form-control-wrap">
-                                                        <input type="text" class="form-control"
-                                                            value="{{ $tingkat }}" id="tingkat" name="tingkat"
-                                                            required readonly>
-                                                    </div>
+                                                    <label class="form-label" for="semester">Tingkat</label>
+                                                    <input type="text" name="tingkat" value="{{ $tingkat }}"
+                                                        class="form-control" readonly required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="kelas">Kelas</label>
-                                                    <div class="form-control-wrap">
-                                                        <input type="text" class="form-control"
-                                                            value="{{ $kelas }}" id="kelas" name="kelas"
-                                                            required readonly>
-                                                    </div>
+                                                    <label class="form-label" for="semester">Kelas</label>
+                                                    <input type="text" name="kelas" value="{{ $kelas }}"
+                                                        class="form-control" readonly required>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="semester">Semester</label>
                                                     <div class="form-control-wrap">
                                                         <select name="semester" id="semester" class="form-control"
                                                             required>
                                                             <option value="">pilih</option>
-                                                            <option value="genap">Genap</option>
-                                                            <option value="ganjil">Ganjil</option>
+                                                            <option value="genap"
+                                                                {{ isset($id) ? ($prakerin->semester == 'genap' ? 'selected' : '') : '' }}>
+                                                                Genap</option>
+                                                            <option value="ganjil"
+                                                                {{ isset($id) ? ($prakerin->semester == 'ganjil' ? 'selected' : '') : '' }}>
+                                                                Ganjil</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="kd_tahun">Tahun Ajaran</label>
                                                     <div class="form-control-wrap">
@@ -78,7 +69,9 @@
                                                             required>
                                                             <option value="">pilih</option>
                                                             @foreach ($ajaran as $item)
-                                                                <option value="{{ $item->kd_tahun }}">{{ $item->th_ajaran }}
+                                                                <option value="{{ $item->kd_tahun }}"
+                                                                    {{ isset($id) ? ($prakerin->kd_tahun == $item->kd_tahun ? 'selected' : '') : '' }}>
+                                                                    {{ $item->th_ajaran }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -88,72 +81,71 @@
                                             {{-- siswa --}}
                                             @php
                                                 $no = 0;
-                                                $no1 = 0;
-                                                $no2 = 0;
-                                                $no3 = 0;
                                             @endphp
                                             @foreach ($siswa as $item)
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label class="form-label" for="kd_siswa">Kd Siswa</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" class="form-control"
-                                                                value="{{ $item->kd_siswa }}" id="kd_siswa"
-                                                                name="kd_siswa[]" required readonly>
+                                                            <input type="text" value="{{ $item->kd_siswa }}"
+                                                                class="form-control" id="kd_siswa"
+                                                                name="kd_siswa[{{ $no }}]" required readonly>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label class="form-label" for="nm_siswa">Nama Siswa</label>
                                                         <div class="form-control-wrap">
+                                                            <input type="text" value="{{ $item->nm_siswa }}"
+                                                                class="form-control" id="nm_siswa"
+                                                                name="nm_siswa[{{ $no }}]" required readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="sakit">Sakit</label>
+                                                        <div class="form-control-wrap">
+                                                            <input type="text"
+                                                                value="{{ isset($id) ? $absen->sakit : '' }}"
+                                                                class="form-control" id="sakit"
+                                                                name="sakit[{{ $no }}]" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="izin">Izin</label>
+                                                        <div class="form-control-wrap">
                                                             <input type="text" class="form-control"
-                                                                value="{{ $item->nm_siswa }}" id="nm_siswa"
-                                                                name="nm_siswa[]" required readonly>
+                                                                value="{{ isset($id) ? $absen->izin : '' }}"
+                                                                id="izin" name="izin[{{ $no }}]"
+                                                                required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="proses">Proses</label>
+                                                        <label class="form-label" for="tanpa_ket">Tanpa
+                                                            Keterangan</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="proses"
-                                                                name="proses[{{ $no++ }}]" required>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ isset($id) ? $absen->tanpa_ket : '' }}"
+                                                                id="tanpa_ket" name="tanpa_ket[{{ $no }}]"
+                                                                required>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="produk">Produk</label>
-                                                        <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="produk"
-                                                                name="produk[{{ $no1++ }}]" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="proyek">Proyek</label>
-                                                        <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="proyek"
-                                                                name="proyek[{{ $no2++ }}]" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="deskripsi">Keterangan</label>
-                                                        <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" value=""
-                                                                id="deskripsi" name="deskripsi_k[{{ $no3++ }}]">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                @php
+                                                    $no++;
+                                                @endphp
                                             @endforeach
                                             {{-- end siswa --}}
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-lg btn-primary">Simpan</button>
+                                                    <button type="submit"
+                                                        class="btn btn-lg btn-primary">Simpan</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,25 +160,4 @@
         </div>
     </div>
     <!-- content @e -->
-@endsection
-
-@push('customjs')
-    <script>
-        $(document).ready(function() {
-            // jQuery.validator.addMethod("allRequired", function(value, elem) {
-            //     // Use the name to get all the inputs and verify them
-            //     var name = elem.name;
-            //     return $('input[name="' + name + '"]').map(function(i, obj) {
-            //         return $(obj).val();
-            //     }).get().every(function(v) {
-            //         return v;
-            //     });
-            // });
-            // jQuery('.form-validate-arr').validate({
-            //     rules: {
-            //         'proses[]': 'allRequired'
-            //     }
-            // })
-        })
-    </script>
-@endpush
+</div>

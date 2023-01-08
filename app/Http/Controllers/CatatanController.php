@@ -29,9 +29,13 @@ class CatatanController extends Controller
      */
     public function create(Request $request)
     {
-        $siswa = $request->siswa;
-        $ajaran = Ajaran::all();
-        return view('pages.catatan.form',compact('ajaran','siswa'));
+        if($request->filled('siswa')){
+            $siswa = $request->siswa;
+            $ajaran = Ajaran::all();
+            return view('pages.catatan.form',compact('ajaran','siswa'));
+        }
+
+        return view('pages.catatan.create');
     }
 
     /**
@@ -108,5 +112,28 @@ class CatatanController extends Controller
         $wali = $wali->with('guru');
         $wali = $wali->get();
         return view('pages.catatan.siswa',compact('wali'));
+    }
+
+
+    public function bulk(Request $request)
+    {
+        $kd_siswa = $request->kd_siswa;
+        $catatan = $request->catatan;
+
+        for($i=0; $i<count($kd_siswa); $i++)
+        {
+            catatan::create([
+                'kd_cat'=>AutoCode::code('PKR'),
+                'kd_wali'=>$request->kd_wali,
+                'tingkat'=>$request->tingkat,
+                'kelas'=>$request->kelas,
+                'semester'=>$request->semester,
+                'kd_tahun'=>$request->kd_tahun,
+                'kd_siswa'=>$kd_siswa[$i],
+                'catatan'=>$catatan[$i],
+            ]);
+        }
+
+        return redirect()->route('catatan.wali')->with(['message'=>'Tambah nilai catatan berhasil']);
     }
 }

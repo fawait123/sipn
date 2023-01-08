@@ -85,32 +85,6 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="fv-topics">Agama</label>
-                                                    <div class="form-control-wrap ">
-                                                        <select class="form-select js-select2" id="fv-topics" name="agama"
-                                                            data-placeholder="Select a option" required>
-                                                            <option label="empty" value=""></option>
-                                                            <option value="islam"
-                                                                {{ isset($id) ? ($siswa->agama == 'islam' ? 'selected' : '') : '' }}>
-                                                                Islam</option>
-                                                            <option value="kristen"
-                                                                {{ isset($id) ? ($siswa->agama == 'kristen' ? 'selected' : '') : '' }}>
-                                                                Kristen</option>
-                                                            <option value="katholik"
-                                                                {{ isset($id) ? ($siswa->agama == 'katholik' ? 'selected' : '') : '' }}>
-                                                                Katholik</option>
-                                                            <option value="buddha"
-                                                                {{ isset($id) ? ($siswa->agama == 'buddha' ? 'selected' : '') : '' }}>
-                                                                Buddha</option>
-                                                            <option value="konghucu"
-                                                                {{ isset($id) ? ($siswa->agama == 'konghucu' ? 'selected' : '') : '' }}>
-                                                                Konghucu</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
                                                     <label class="form-label" for="tingkat">Tingkat</label>
                                                     <div class="form-control-wrap">
                                                         <select name="tingkat" id="tingkat" class="form-control" required>
@@ -124,6 +98,22 @@
                                                             <option value="SMA"
                                                                 {{ isset($id) ? ($siswa->tingkat == 'SMA' ? 'selected' : '') : '' }}>
                                                                 SMA</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="fv-topics">Kelas</label>
+                                                    <div class="form-control-wrap ">
+                                                        <select class="form-select js-select2" id="kelas" name="kelas"
+                                                            data-placeholder="Select a option" required>
+                                                            <option label="pilih" value=""></option>
+                                                            @for ($i = 1; $i < 7; $i++)
+                                                                <option label="{{ $i }}"
+                                                                    value="{{ $i }}">
+                                                                </option>
+                                                            @endfor
                                                         </select>
                                                     </div>
                                                 </div>
@@ -144,13 +134,39 @@
                                                     <div class="form-control-wrap ">
                                                         <select class="form-select js-select2" id="fv-topics"
                                                             name="kd_prodi" data-placeholder="Select a option" required>
-                                                            <option label="empty" value=""></option>\
+                                                            <option label="pilih" value=""></option>\
                                                             @foreach ($prodi as $item)
                                                                 <option value="{{ $item->kd_prodi }}"
                                                                     {{ isset($id) ? ($siswa->kd_prodi == $item->kd_prodi ? 'selected' : '') : '' }}>
                                                                     {{ $item->kompetensi . ' ' . $item->kd_prodi }}
                                                                 </option>
                                                             @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="fv-topics">Agama</label>
+                                                    <div class="form-control-wrap ">
+                                                        <select class="form-select js-select2" id="fv-topics"
+                                                            name="agama" data-placeholder="Select a option" required>
+                                                            <option label="pilih" value=""></option>
+                                                            <option value="islam"
+                                                                {{ isset($id) ? ($siswa->agama == 'islam' ? 'selected' : '') : '' }}>
+                                                                Islam</option>
+                                                            <option value="kristen"
+                                                                {{ isset($id) ? ($siswa->agama == 'kristen' ? 'selected' : '') : '' }}>
+                                                                Kristen</option>
+                                                            <option value="katholik"
+                                                                {{ isset($id) ? ($siswa->agama == 'katholik' ? 'selected' : '') : '' }}>
+                                                                Katholik</option>
+                                                            <option value="buddha"
+                                                                {{ isset($id) ? ($siswa->agama == 'buddha' ? 'selected' : '') : '' }}>
+                                                                Buddha</option>
+                                                            <option value="konghucu"
+                                                                {{ isset($id) ? ($siswa->agama == 'konghucu' ? 'selected' : '') : '' }}>
+                                                                Konghucu</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -182,3 +198,41 @@
     </div>
     <!-- content @e -->
 @endsection
+
+@push('customjs')
+    <script>
+        function getKelas(kelas) {
+            let id = '{{ isset($id) ? $siswa->kelas : null }}'
+            let option = '<option value="">pilih</option>'
+            if (kelas === 'SD') {
+                for (let i = 1; i < 7; i++) {
+                    option += `
+                        <option value="${i}" ${id == i ? 'selected':''}>${i}</option>
+                    `
+                }
+            } else if (kelas === 'SMP' || kelas === 'SMA') {
+                for (let i = 1; i < 4; i++) {
+                    option += `
+                        <option value="${i}" ${id == i ? 'selected':''}>${i}</option>
+                    `
+                }
+            } else {
+                for (let i = 1; i < 7; i++) {
+                    option += `
+                        <option value="${i}" ${id == i ? 'selected':''}>${i}</option>
+                    `
+                }
+            }
+            $("#kelas").html(option);
+        }
+        $(document).ready(function() {
+            $("#tingkat").on('change', function() {
+                let val = $(this).val()
+                getKelas(val)
+            })
+
+            let kelas = $("#tingkat").find(':selected').val()
+            getKelas(kelas)
+        })
+    </script>
+@endpush
