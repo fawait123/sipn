@@ -36,13 +36,15 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="nk-block-tools-opt">
-                                            <a href="#" class="btn btn-icon btn-primary d-md-none"><em
-                                                    class="icon ni ni-plus"></em></a>
-                                            <a href="{{ route('pengetahuan.create') }}"
-                                                class="btn btn-primary d-none d-md-inline-flex"><em
-                                                    class="icon ni ni-plus"></em><span>Tambah</span></a>
-                                        </li>
+                                        @if (auth()->user()->akses == 'guru')
+                                            <li class="nk-block-tools-opt">
+                                                <a href="#" class="btn btn-icon btn-primary d-md-none"><em
+                                                        class="icon ni ni-plus"></em></a>
+                                                <a href="{{ route('pengetahuan.create') }}"
+                                                    class="btn btn-primary d-none d-md-inline-flex"><em
+                                                        class="icon ni ni-plus"></em><span>Tambah</span></a>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
