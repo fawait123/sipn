@@ -74,13 +74,13 @@
                     <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Data Nilai / Guru</h6>
                     </li><!-- .nk-menu-heading -->
-                    <li class="nk-menu-item">
+                    <li class="nk-menu-item {{ Request::is('nilai/keterampilan/*') ? 'active current-page' : '' }}">
                         <a href="{{ route('keterampilan.mapel') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
                             <span class="nk-menu-text">Nilai Keterampilan </span>
                         </a>
                     </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
+                    <li class="nk-menu-item {{ Request::is('nilai/pengetahuan/*') ? 'active current-page' : '' }}">
                         <a href="{{ route('pengetahuan.mapel') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
                             <span class="nk-menu-text">Nilai Pengetahuan </span>

@@ -10,6 +10,8 @@ class Pengetahuan extends Component
 {
     public $search = '';
     public $kd_mapel = '';
+    public $tingkat = '';
+    public $kelas = '';
     public $perPage = 10;
 
     use WithPagination;
@@ -23,7 +25,9 @@ class Pengetahuan extends Component
 
     protected $queryString = [
         'search',
-        'kd_mapel'
+        'kd_mapel',
+        'tingkat',
+        'kelas'
     ];
 
 
@@ -31,11 +35,13 @@ class Pengetahuan extends Component
     {
         $query = PengetahuanModel::query();
         $query = $query->with(['mapel','siswa','ajaran']);
+        $query = $query->where('kd_mapel',$this->kd_mapel)->where('tingkat',$this->tingkat)->where('kelas','like',$this->kelas);
         if($this->search != '')
         {
-            $query = $query->where('tingkat','like','%'.$this->search.'%');
+            $query = $query->whereHas('siswa',function($qr){
+                $qr->where('nm_siswa','like','%'.$this->search.'%');
+            });
         }
-        $query = $query->where('kd_mapel',request('kd_mapel'))->where('tingkat','like',request('tingkat'));
         $query = $query->paginate($this->perPage);
         $count = PengetahuanModel::count();
         return view('livewire.pengetahuan',compact('query','count'));

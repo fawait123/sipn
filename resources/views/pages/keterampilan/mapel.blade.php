@@ -23,7 +23,7 @@
                                                 data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
                                             <div class="toggle-expand-content" data-content="pageMenu">
                                                 <ul class="nk-block-tools g-3">
-                                                    <li>
+                                                    {{-- <li>
                                                         <div class="drodown">
                                                             <a href="#"
                                                                 class="dropdown-toggle btn btn-white btn-dim btn-outline-light"
@@ -39,11 +39,14 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                    <li class="nk-block-tools-opt d-none d-sm-block">
-                                                        <a href="#" class="btn btn-primary"><em
-                                                                class="icon ni ni-plus"></em><span>Add Project</span></a>
-                                                    </li>
+                                                    </li> --}}
+                                                    @if (auth()->user()->akses == 'guru')
+                                                        <li class="nk-block-tools-opt d-none d-sm-block">
+                                                            <a href="{{ route('keterampilan.create') }}"
+                                                                class="btn btn-primary"><em
+                                                                    class="icon ni ni-plus"></em><span>Tambah Nilai</span></a>
+                                                        </li>
+                                                    @endif
                                                     <li class="nk-block-tools-opt d-block d-sm-none">
                                                         <a href="#" class="btn btn-icon btn-primary"><em
                                                                 class="icon ni ni-plus"></em></a>
