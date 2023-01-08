@@ -94,6 +94,7 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     });
     // sikap
     Route::group(['prefix'=>'sikap'],function(){
+        Route::post('/bulk',[SikapController::class,'bulk'])->name('sikap.bulk');
         Route::get('/',[SikapController::class,'index'])->name('sikap.index');
         Route::get('/siswa',[SikapController::class,'wali'])->name('sikap.wali');
         Route::get('/create',[SikapController::class,'create'])->name('sikap.create');

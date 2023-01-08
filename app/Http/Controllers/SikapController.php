@@ -29,9 +29,13 @@ class SikapController extends Controller
      */
     public function create(Request $request)
     {
-        $siswa = $request->siswa;
-        $ajaran = Ajaran::all();
-        return view('pages.sikap.form',compact('ajaran','siswa'));
+        if($request->filled('siswa')){
+            $siswa = $request->siswa;
+            $ajaran = Ajaran::all();
+            return view('pages.sikap.form',compact('ajaran','siswa'));
+        }
+
+        return view('pages.sikap.create');
     }
 
     /**
@@ -108,5 +112,26 @@ class SikapController extends Controller
         $wali = $wali->with('guru');
         $wali = $wali->get();
         return view('pages.sikap.siswa',compact('wali'));
+    }
+
+    public function bulk(Request $request)
+    {
+        $kd_siswa = $request->kd_siswa;
+        $sikap = $request->sikap;
+
+        for($i=0; $i<count($kd_siswa); $i++){
+            sikap::create([
+                'kd_nsikap'=>AutoCode::code('PKR'),
+                'kd_wali'=>$request->kd_wali,
+                'tingkat'=>$request->tingkat,
+                'kelas'=>$request->kelas,
+                'semester'=>$request->semester,
+                'kd_tahun'=>$request->kd_tahun,
+                'kd_siswa'=>$kd_siswa[$i],
+                'sikap'=>$sikap[$i],
+            ]);
+        }
+
+        return redirect()->route('sikap.wali')->with(['message'=>'Tambah nilai sikap berhasil']);
     }
 }
