@@ -30,10 +30,14 @@ class EkstrakurikulerController extends Controller
      */
     public function create(Request $request)
     {
-        $siswa = $request->siswa;
-        $ajaran = Ajaran::all();
-        $ekskul = Ekskul::all();
-        return view('pages.ekstrakurikuler.form',compact('ajaran','siswa','ekskul'));
+        if($request->filled('siswa')){
+            $siswa = $request->siswa;
+            $ajaran = Ajaran::all();
+            $ekskul = Ekskul::all();
+            return view('pages.ekstrakurikuler.form',compact('ajaran','siswa','ekskul'));
+        }
+
+        return view('pages.ekstrakurikuler.create');
     }
 
     /**
@@ -111,5 +115,27 @@ class EkstrakurikulerController extends Controller
         $wali = $wali->with('guru');
         $wali = $wali->get();
         return view('pages.ekstrakurikuler.siswa',compact('wali'));
+    }
+
+    public function bulk(Request $request)
+    {
+        $kd_siswa = $request->kd_siswa;
+        $predikat = $request->predikat;
+
+        for($i=0; $i<count($kd_siswa); $i++){
+            ekstrakurikuler::create([
+                'kd_nekskul'=>AutoCode::code('PKR'),
+                'kd_wali'=>$request->kd_wali,
+                'tingkat'=>$request->tingkat,
+                'kelas'=>$request->kelas,
+                'semester'=>$request->semester,
+                'kd_tahun'=>$request->kd_tahun,
+                'kd_ekskul'=>$request->kd_ekskul,
+                'kd_siswa'=>$kd_siswa[$i],
+                'predikat'=>$predikat[$i],
+            ]);
+        }
+
+        return redirect()->route('ekstrakurikuler.wali')->with(['message'=>'Tambah nilai ekstrakurikuler berhasil']);
     }
 }

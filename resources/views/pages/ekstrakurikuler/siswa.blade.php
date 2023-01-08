@@ -17,6 +17,7 @@
                             @php
                                 $siswa = Siswa::where('tingkat', $row->tingkat)
                                     ->where('kd_prodi', $row->kd_prodi)
+                                    ->where('kelas', $row->kelas)
                                     ->get();
                             @endphp
                             <div class="nk-block-head nk-block-head-sm">
@@ -33,7 +34,7 @@
                                                 data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
                                             <div class="toggle-expand-content" data-content="pageMenu">
                                                 <ul class="nk-block-tools g-3">
-                                                    <li>
+                                                    {{-- <li>
                                                         <div class="drodown">
                                                             <a href="#"
                                                                 class="dropdown-toggle btn btn-white btn-dim btn-outline-light"
@@ -49,11 +50,14 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                    <li class="nk-block-tools-opt d-none d-sm-block">
-                                                        <a href="#" class="btn btn-primary"><em
-                                                                class="icon ni ni-plus"></em><span>Add Project</span></a>
-                                                    </li>
+                                                    </li> --}}
+                                                    @if (auth()->user()->akses == 'wali')
+                                                        <li class="nk-block-tools-opt d-none d-sm-block">
+                                                            <a href="{{ route('ekstrakurikuler.create') }}"
+                                                                class="btn btn-primary"><em
+                                                                    class="icon ni ni-plus"></em><span>Tambah Nilai</span></a>
+                                                        </li>
+                                                    @endif
                                                     <li class="nk-block-tools-opt d-block d-sm-none">
                                                         <a href="#" class="btn btn-icon btn-primary"><em
                                                                 class="icon ni ni-plus"></em></a>
@@ -71,6 +75,7 @@
                                             $ekstrakurikuler = ekstrakurikuler::with('ekskul')
                                                 ->where('kd_siswa', $item->kd_siswa)
                                                 ->where('tingkat', $item->tingkat)
+                                                ->where('kelas', $item->kelas)
                                                 ->get();
                                         @endphp
                                         <div class="col-sm-6 col-lg-4 col-xxl-3">
@@ -78,14 +83,15 @@
                                                 <div class="card-inner">
                                                     <div class="project">
                                                         <div class="project-head">
-                                                            <a href="{{ route('ekstrakurikuler.index') }}?kd_mapel={{ $item->kd_siswa }}"
+                                                            <a href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#modalZoom{{ $no }}"
                                                                 class="project-title">
                                                                 <div class="user-avatar sq bg-purple">
                                                                     <span>{{ $item->tingkat }}</span>
                                                                 </div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">{{ $item->nm_siswa }}</h6>
-                                                                    <span class="sub-text">{{ $item->tingkat }}</span>
+                                                                    <span class="sub-text">Kelas {{ $item->kelas }}</span>
                                                                 </div>
                                                             </a>
                                                             <div class="drodown">
@@ -116,7 +122,7 @@
                                                             <p>{{ $row->guru->nm_guru }} kamu mempunyai siswa didik
                                                                 {{ $item->nm_siswa }} di
                                                                 tingkat
-                                                                {{ $item->tingkat }}</p>
+                                                                {{ $item->tingkat }} kelas {{ $item->kelas }}</p>
                                                         </div>
                                                         <div class="project-meta">
                                                             <span class="badge badge-dim bg-warning"><em
@@ -146,7 +152,8 @@
                                                                         <th scope="col">#</th>
                                                                         <th scope="col">Tahun</th>
                                                                         <th scope="col">Semester</th>
-                                                                        <th scope="col">ekstrakurikuler</th>
+                                                                        <th scope="col">Ekstrakurikuler</th>
+                                                                        <th scope="col">Predikat</th>
                                                                         @if (auth()->user()->akses == 'wali')
                                                                             <th scope="col">Aksi</th>
                                                                         @endif
@@ -162,6 +169,7 @@
                                                                                 <td>{{ $el->kd_tahun }}</td>
                                                                                 <td>{{ $el->semester }}</td>
                                                                                 <td>{{ $el->ekskul->nm_ekskul ?? '' }}</td>
+                                                                                <td>{{ $el->predikat }}</td>
                                                                                 @if (auth()->user()->akses == 'wali')
                                                                                     <td>
                                                                                         <a

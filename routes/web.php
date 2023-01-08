@@ -115,6 +115,7 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     });
     // ekstrakurikuler
     Route::group(['prefix'=>'ekstrakurikuler'],function(){
+        Route::post('/bulk',[EkstrakurikulerController::class,'bulk'])->name('ekstrakurikuler.bulk');
         Route::get('/',[EkstrakurikulerController::class,'index'])->name('ekstrakurikuler.index');
         Route::get('/siswa',[EkstrakurikulerController::class,'wali'])->name('ekstrakurikuler.wali');
         Route::get('/create',[EkstrakurikulerController::class,'create'])->name('ekstrakurikuler.create');
