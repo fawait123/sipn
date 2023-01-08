@@ -80,12 +80,12 @@
                                                                 <div class="dropdown-menu dropdown-menu-end">
                                                                     <ul class="link-list-opt no-bdr">
                                                                         <li><a
-                                                                                href="{{ route('keterampilan.index') }}?kd_mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}"><em
+                                                                                href="{{ route('keterampilan.index') }}?kd_mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}&kelas={{ $item->kelas }}"><em
                                                                                     class="icon ni ni-eye"></em><span>Lihat
                                                                                     Nilai</span></a></li>
                                                                         @if (auth()->user()->akses == 'guru')
                                                                             <li><a
-                                                                                    href="{{ route('keterampilan.create') }}?mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}"><em
+                                                                                    href="{{ route('keterampilan.create') }}?mapel={{ $item->kd_mapel }}&tingkat={{ $item->tingkat }}&kelas={{ $item->kelas }}"><em
                                                                                         class="icon ni ni-edit"></em><span>Tambah
                                                                                         Nilai</span></a></li>
                                                                         @endif
@@ -100,7 +100,7 @@
                                                             <p>{{ $item->nm_guru }} kamu mengampuh
                                                                 {{ $item->mapel->nm_mapel }} di
                                                                 tingkat
-                                                                {{ $item->tingkat }}</p>
+                                                                {{ $item->tingkat }} kelas {{ $item->kelas }}</p>
                                                         </div>
                                                         <div class="project-meta">
                                                             <span class="badge badge-dim bg-warning"><em

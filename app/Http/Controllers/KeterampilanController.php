@@ -6,6 +6,7 @@ use App\Models\Keterampilan;
 use App\Models\Guru;
 use App\Models\Siswa;
 use App\Models\Ajaran;
+use App\Models\GuruMapel;
 use Illuminate\Http\Request;
 use App\Helpers\AutoCode;
 
@@ -28,11 +29,15 @@ class KeterampilanController extends Controller
      */
     public function create(Request $request)
     {
-        $siswa = Siswa::where('tingkat',$request->tingkat)->get();
-        $tingkat = $request->tingkat;
-        $mapel = $request->mapel;
-        $ajaran = Ajaran::all();
-        return view('pages.keterampilan.form',compact('siswa','tingkat','mapel','ajaran'));
+        if($request->filled('tingkat') && $request->filled('kelas') && $request->filled('mapel')){
+            $siswa = Siswa::where('tingkat',$request->tingkat)->where('kelas',$request->kelas)->get();
+            $tingkat = $request->tingkat;
+            $kelas = $request->kelas;
+            $mapel = $request->mapel;
+            $ajaran = Ajaran::all();
+            return view('pages.keterampilan.form',compact('siswa','tingkat','mapel','ajaran','kelas'));
+        }
+        return view('pages.keterampilan.create');
     }
 
     /**
@@ -53,6 +58,7 @@ class KeterampilanController extends Controller
             Keterampilan::create([
                 'kd_mapel'=>$request->kd_mapel,
                 'tingkat'=>$request->tingkat,
+                'kelas'=>$request->kelas,
                 'semester'=>$request->semester,
                 'kd_tahun'=>$request->kd_tahun,
                 'kd_siswa'=>$siswa[$i],

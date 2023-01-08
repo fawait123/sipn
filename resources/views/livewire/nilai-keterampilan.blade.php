@@ -1,7 +1,4 @@
-@extends('layouts.app')
-
-
-@section('content')
+<div>
     <div class="nk-content ">
         <div class="container-fluid">
             <div class="nk-content-inner">
@@ -9,7 +6,8 @@
                     <div class="components-preview wide-md mx-auto">
                         <div class="nk-block-head nk-block-head-lg wide-sm">
                             <div class="nk-block-head-content">
-                                <div class="nk-block-head-sub"><a class="back-to" href="{{ route('keterampilan.mapel') }}"><em
+                                <div class="nk-block-head-sub"><a class="back-to"
+                                        href="{{ route('keterampilan.mapel') }}"><em
                                             class="icon ni ni-arrow-left"></em><span>Form</span></a></div>
                                 <h2 class="nk-block-title fw-normal">{{ isset($id) ? 'Ubah' : 'Tambah' }} Data Nilai
                                     keterampilan
@@ -29,10 +27,27 @@
                                         <div class="row g-gs">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="kd_mapel">Kode Mapel</label>
+                                                    <label class="form-label" for="kd_gumap">Pilih Matapelajaran</label>
                                                     <div class="form-control-wrap">
-                                                        <input type="text" class="form-control"
-                                                            value="{{ $mapel }}" id="kd_mapel" name="kd_mapel"
+                                                        <select name="kd_gumap" id="kd_gumap" class="form-control"
+                                                            wire:model="gurumapel" required>
+                                                            <option value="">pilih</option>
+                                                            @foreach ($mapel as $item)
+                                                                <option value="{{ $item->kd_gumap }}">
+                                                                    {{ $item->mapel->nm_mapel ?? '' }}
+                                                                    {{ 'Tingkat ' . $item->tingkat . ' kelas ' . $item->kelas }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="kd_mapel">Kd Mapel</label>
+                                                    <div class="form-control-wrap">
+                                                        <input type="text" class="form-control" id="kd_mapel"
+                                                            value="{{ $selected->kd_mapel ?? '' }}" name="kd_mapel"
                                                             required readonly>
                                                     </div>
                                                 </div>
@@ -41,8 +56,8 @@
                                                 <div class="form-group">
                                                     <label class="form-label" for="tingkat">Tingkat</label>
                                                     <div class="form-control-wrap">
-                                                        <input type="text" class="form-control"
-                                                            value="{{ $tingkat }}" id="tingkat" name="tingkat"
+                                                        <input type="text" class="form-control" id="tingkat"
+                                                            value="{{ $selected->tingkat ?? '' }}" name="tingkat"
                                                             required readonly>
                                                     </div>
                                                 </div>
@@ -52,8 +67,8 @@
                                                     <label class="form-label" for="kelas">Kelas</label>
                                                     <div class="form-control-wrap">
                                                         <input type="text" class="form-control"
-                                                            value="{{ $kelas }}" id="kelas" name="kelas"
-                                                            required readonly>
+                                                            value="{{ $selected->kelas ?? '' }}" id="kelas"
+                                                            name="kelas" required readonly>
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,7 +93,8 @@
                                                             required>
                                                             <option value="">pilih</option>
                                                             @foreach ($ajaran as $item)
-                                                                <option value="{{ $item->kd_tahun }}">{{ $item->th_ajaran }}
+                                                                <option value="{{ $item->kd_tahun }}">
+                                                                    {{ $item->th_ajaran }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -145,7 +161,8 @@
                                                         <label class="form-label" for="deskripsi">Keterangan</label>
                                                         <div class="form-control-wrap">
                                                             <input type="text" class="form-control" value=""
-                                                                id="deskripsi" name="deskripsi_k[{{ $no3++ }}]">
+                                                                id="deskripsi"
+                                                                name="deskripsi_k[{{ $no3++ }}]">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -153,7 +170,8 @@
                                             {{-- end siswa --}}
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-lg btn-primary">Simpan</button>
+                                                    <button type="submit"
+                                                        class="btn btn-lg btn-primary">Simpan</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,26 +185,18 @@
             </div>
         </div>
     </div>
-    <!-- content @e -->
-@endsection
+</div>
 
 @push('customjs')
     <script>
         $(document).ready(function() {
-            // jQuery.validator.addMethod("allRequired", function(value, elem) {
-            //     // Use the name to get all the inputs and verify them
-            //     var name = elem.name;
-            //     return $('input[name="' + name + '"]').map(function(i, obj) {
-            //         return $(obj).val();
-            //     }).get().every(function(v) {
-            //         return v;
-            //     });
-            // });
-            // jQuery('.form-validate-arr').validate({
-            //     rules: {
-            //         'proses[]': 'allRequired'
-            //     }
-            // })
+            $("#kd_gumap").on('change', function() {
+                setTimeout(() => {
+                    window.location.href = window.location.pathname + window.location.search +
+                        window.location
+                        .hash
+                }, 1000);
+            })
         })
     </script>
 @endpush
