@@ -83,6 +83,7 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     });
     // absen
     Route::group(['prefix'=>'absen'],function(){
+        Route::post('/bulk',[AbsenController::class,'bulk'])->name('absen.bulk');
         Route::get('/',[AbsenController::class,'index'])->name('absen.index');
         Route::get('/siswa',[AbsenController::class,'wali'])->name('absen.wali');
         Route::get('/create',[AbsenController::class,'create'])->name('absen.create');

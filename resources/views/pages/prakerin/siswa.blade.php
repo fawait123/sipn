@@ -73,6 +73,7 @@
                                         @php
                                             $prakerin = Prakerin::where('kd_siswa', $item->kd_siswa)
                                                 ->where('tingkat', $item->tingkat)
+                                                ->where('kelas', $item->kelas)
                                                 ->get();
                                         @endphp
                                         <div class="col-sm-6 col-lg-4 col-xxl-3">

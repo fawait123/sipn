@@ -29,9 +29,13 @@ class AbsenController extends Controller
      */
     public function create(Request $request)
     {
-        $siswa = $request->siswa;
-        $ajaran = Ajaran::all();
-        return view('pages.absen.form',compact('ajaran','siswa'));
+        if($request->filled('siswa')){
+            $siswa = $request->siswa;
+            $ajaran = Ajaran::all();
+            return view('pages.absen.form',compact('ajaran','siswa'));
+        }
+
+        return view('pages.absen.create');
     }
 
     /**
@@ -108,5 +112,30 @@ class AbsenController extends Controller
         $wali = $wali->with('guru');
         $wali = $wali->get();
         return view('pages.absen.siswa',compact('wali'));
+    }
+
+    public function bulk(Request $request)
+    {
+        $kd_siswa = $request->kd_siswa;
+        $sakit = $request->sakit;
+        $izin = $request->izin;
+        $tanpa_ket = $request->tanpa_ket;
+
+        for($i=0; $i<count($kd_siswa); $i++){
+            absen::create([
+                'kd_nabsen'=>AutoCode::code('PKR'),
+                'kd_wali'=>$request->kd_wali,
+                'tingkat'=>$request->tingkat,
+                'kelas'=>$request->kelas,
+                'semester'=>$request->semester,
+                'kd_tahun'=>$request->kd_tahun,
+                'kd_siswa'=>$kd_siswa[$i],
+                'sakit'=>$sakit[$i],
+                'izin'=>$izin[$i],
+                'tanpa_ket'=>$tanpa_ket[$i],
+            ]);
+        }
+
+        return redirect()->route('absen.wali')->with(['message'=>'Tambah nilai absen berhasil']);
     }
 }
