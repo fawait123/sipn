@@ -50,7 +50,7 @@ class EkstrakurikulerController extends Controller
     {
         $wali = Wali::where('nip',auth()->user()->kode)->first();
         $siswa = Siswa::where('kd_siswa',$request->kd_siswa)->first();
-        ekstrakurikuler::create(array_merge($request->all(),['kd_nekskul'=>AutoCode::code('PKR'),'kd_wali'=>$wali->kd_wali,'tingkat'=>$wali->tingkat]));
+        ekstrakurikuler::create(array_merge($request->all(),['kd_nekskul'=>AutoCode::code('PKR'),'kd_wali'=>$wali->kd_wali,'tingkat'=>$siswa->tingkat,'kelas'=>$siswa->kelas]));
         return redirect()->route('ekstrakurikuler.wali')->with(['message'=>'Data nilai ekstrakurikuler berhasil ditambah']);
     }
 

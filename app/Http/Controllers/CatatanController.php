@@ -48,7 +48,7 @@ class CatatanController extends Controller
     {
         $wali = Wali::where('nip',auth()->user()->kode)->first();
         $siswa = Siswa::where('kd_siswa',$request->kd_siswa)->first();
-        catatan::create(array_merge($request->all(),['kd_cat'=>AutoCode::code('PKR'),'kd_wali'=>$wali->kd_wali,'tingkat'=>$wali->tingkat]));
+        catatan::create(array_merge($request->all(),['kd_cat'=>AutoCode::code('PKR'),'kd_wali'=>$wali->kd_wali,'tingkat'=>$siswa->tingkat,'kelas'=>$siswa->kelas]));
         return redirect()->route('catatan.wali')->with(['message'=>'Data nilai catatan berhasil ditambah']);
     }
 
