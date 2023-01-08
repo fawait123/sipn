@@ -29,9 +29,13 @@ class PrakerinController extends Controller
      */
     public function create(Request $request)
     {
-        $siswa = $request->siswa;
-        $ajaran = Ajaran::all();
-        return view('pages.prakerin.form',compact('ajaran','siswa'));
+        if($request->filled('siswa')){
+            $siswa = $request->siswa;
+            $ajaran = Ajaran::all();
+            return view('pages.prakerin.form',compact('ajaran','siswa'));
+        }
+
+        return view('pages.prakerin.create');
     }
 
     /**
@@ -108,5 +112,32 @@ class PrakerinController extends Controller
         $wali = $wali->with('guru');
         $wali = $wali->get();
         return view('pages.prakerin.siswa',compact('wali'));
+    }
+
+    public function bulk(Request $request)
+    {
+        $kd_siswa = $request->kd_siswa;
+        $nm_du_di  = $request->nm_du_di;
+        $lokasi  = $request->lokasi;
+        $lama  = $request->lama;
+        $keterangan  = $request->keterangan;
+
+        for($i=0; $i<count($kd_siswa); $i++){
+            Prakerin::create([
+                'kd_npkl'=>AutoCode::code('PKR'),
+                'kd_siswa'=>$kd_siswa[$i],
+                'nm_du_di'=>$nm_du_di[$i],
+                'lokasi'=>$lokasi[$i],
+                'lama'=>$lama[$i],
+                'keterangan'=>$keterangan[$i],
+                'kd_tahun'=>$request->kd_tahun,
+                'semester'=>$request->semester,
+                'kd_wali'=>$request->kd_wali,
+                'tingkat'=>$request->tingkat,
+                'kelas'=>$request->kelas,
+            ]);
+        }
+
+        return redirect()->route('prakerin.wali')->with(['message'=>'Tambah nilai prakerin berhasil']);
     }
 }

@@ -72,6 +72,7 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     });
     // prakerin
     Route::group(['prefix'=>'prakerin'],function(){
+        Route::post('/bulk',[PrakerinController::class,'bulk'])->name('prakerin.bulk');
         Route::get('/',[PrakerinController::class,'index'])->name('prakerin.index');
         Route::get('/siswa',[PrakerinController::class,'wali'])->name('prakerin.wali');
         Route::get('/create',[PrakerinController::class,'create'])->name('prakerin.create');
