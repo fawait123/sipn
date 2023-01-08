@@ -48,7 +48,7 @@ class SikapController extends Controller
     {
         $wali = Wali::where('nip',auth()->user()->kode)->first();
         $siswa = Siswa::where('kd_siswa',$request->kd_siswa)->first();
-        sikap::create(array_merge($request->all(),['kd_nsikap'=>AutoCode::code('PKR'),'kd_wali'=>$wali->kd_wali,'tingkat'=>$wali->tingkat]));
+        sikap::create(array_merge($request->all(),['kd_nsikap'=>AutoCode::code('PKR'),'kd_wali'=>$wali->kd_wali,'tingkat'=>$siswa->tingkat,'kelas'=>$siswa->kelas]));
         return redirect()->route('sikap.wali')->with(['message'=>'Data nilai sikap berhasil ditambah']);
     }
 
