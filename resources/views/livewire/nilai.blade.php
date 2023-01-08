@@ -16,8 +16,23 @@
                                         <ul class="nk-block-tools g-3">
                                             <li>
                                                 <select name="semester" id="semester" class="form-control">
-                                                    <option value="ganjil">Ganjil</option>
+                                                    <option value="ganjil" selected>Ganjil</option>
                                                     <option value="genap">Genap</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <select name="tingkat" id="tingkat" class="form-control">
+                                                    <option value="SD" selected>SD</option>
+                                                    <option value="SMP">SMP</option>
+                                                    <option value="SMA">SMA</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <select name="kelas" id="kelas" class="form-control">
+                                                    @for ($i = 1; $i < 7; $i++)
+                                                        <option value="{{ $i }}">Kelas {{ $i }}
+                                                        </option>
+                                                    @endfor
                                                 </select>
                                             </li>
                                             <li class="nk-block-tools-opt">
@@ -33,7 +48,7 @@
                                                     {{-- <button wire:click="download"
                                                         class="btn btn-primary d-none d-md-inline-flex"><em
                                                             class="icon ni ni-download"></em><span>Download</span></button> --}}
-                                                    <a href="{{ route('siswa.nilai.download') }}?semester={{$semester}}"
+                                                    <a href="{{ route('siswa.nilai.download') }}?semester={{ $semester }}"
                                                         class="btn btn-primary d-none d-md-inline-flex"><em
                                                             class="icon ni ni-download"></em><span>Download</span></a>
                                                 @endif
