@@ -105,6 +105,7 @@ Route::group(['prefix'=>'nilai','middleware'=>'auth'],function(){
     });
     // catatatn
     Route::group(['prefix'=>'catatan'],function(){
+        Route::post('/bulk',[CatatanController::class,'bulk'])->name('catatan.bulk');
         Route::get('/',[CatatanController::class,'index'])->name('catatan.index');
         Route::get('/siswa',[CatatanController::class,'wali'])->name('catatan.wali');
         Route::get('/create',[CatatanController::class,'create'])->name('catatan.create');
