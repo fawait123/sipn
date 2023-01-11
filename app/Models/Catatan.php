@@ -20,5 +20,10 @@ class Catatan extends Model
         return 'kd_cat';
     }
 
+    public function wali()
+    {
+        return $this->belongsTo(Wali::class,'kd_wali');
+    }
+
     protected $keyType = 'string';
 }
