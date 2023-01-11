@@ -20,5 +20,10 @@ class Absen extends Model
         return 'kd_nabsen';
     }
 
+    public function wali()
+    {
+        return $this->belongsTo(Wali::class,'kd_wali');
+    }
+
     protected $keyType = 'string';
 }

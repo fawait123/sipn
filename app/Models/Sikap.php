@@ -20,5 +20,10 @@ class Sikap extends Model
         return 'kd_nsikap';
     }
 
+    public function wali()
+    {
+        return $this->belongsTo(Wali::class,'kd_wali');
+    }
+
     protected $keyType = 'string';
 }
