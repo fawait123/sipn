@@ -9,7 +9,7 @@
     <meta name="description"
         content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon.png">
+    <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon2.png">
     <!-- Page Title  -->
     <title>Login | Tunas Bangsa</title>
     <!-- StyleSheets  -->
@@ -33,13 +33,11 @@
                             </div>
                             <div class="nk-block nk-block-middle nk-auth-body">
                                 <div class="brand-logo pb-5">
-                                    <a href="html/index.html" class="logo-link">
-                                        <img class="logo-light logo-img logo-img-lg"
-                                            src="{{ asset('assets') }}/images/logo.png"
-                                            srcset="{{ asset('assets') }}/images/logo2x.png 2x" alt="logo">
+                                    <a href="html/index.html" class="logo-link" style="display: flex">
                                         <img class="logo-dark logo-img logo-img-lg"
-                                            src="{{ asset('assets') }}/images/logo-dark.png"
-                                            srcset="{{ asset('assets') }}/images/logo-dark2x.png 2x" alt="logo-dark">
+                                            src="{{ asset('assets') }}/images/favicon2.png"
+                                            srcset="{{ asset('assets') }}/images/favicon2.png 2x" alt="logo-dark">
+                                        <h5 style="margin-left: 30px">SMK TUNAS BANGSA</h5>
                                     </a>
                                 </div>
                                 <div class="nk-block-head">
@@ -52,60 +50,6 @@
                                 </div><!-- .nk-block-head -->
                                 @include('auth.form')
                             </div><!-- .nk-block -->
-                            <div class="nk-block nk-auth-footer">
-                                <div class="nk-block-between">
-                                    <ul class="nav nav-sm">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Terms & Condition</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Privacy Policy</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Help</a>
-                                        </li>
-                                        <li class="nav-item dropup">
-                                            <a class="dropdown-toggle dropdown-indicator has-indicator nav-link"
-                                                data-bs-toggle="dropdown" data-offset="0,10"><small>English</small></a>
-                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
-                                                <ul class="language-list">
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="{{ asset('assets') }}/images/flags/english.png"
-                                                                alt="" class="language-flag">
-                                                            <span class="language-name">English</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="{{ asset('assets') }}/images/flags/spanish.png"
-                                                                alt="" class="language-flag">
-                                                            <span class="language-name">Español</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="{{ asset('assets') }}/images/flags/french.png"
-                                                                alt="" class="language-flag">
-                                                            <span class="language-name">Français</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="{{ asset('assets') }}/images/flags/turkey.png"
-                                                                alt="" class="language-flag">
-                                                            <span class="language-name">Türkçe</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul><!-- .nav -->
-                                </div>
-                                <div class="mt-3">
-                                    <p>&copy; 2022 DashLite. All Rights Reserved.</p>
-                                </div>
-                            </div><!-- .nk-block -->
                         </div><!-- .nk-split-content -->
                         <div class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right"
                             data-toggle-body="true" data-content="athPromo" data-toggle-screen="lg"
@@ -115,10 +59,8 @@
                                     <div class="slider-item">
                                         <div class="nk-feature nk-feature-center">
                                             <div class="nk-feature-img">
-                                                <img class="round"
-                                                    src="{{ asset('assets') }}/images/slides/promo-a.png"
-                                                    srcset="{{ asset('assets') }}/images/slides/promo-a2x.png 2x"
-                                                    alt="">
+                                                <img class="round" src="{{ asset('assets') }}/images/bg/1.jpg"
+                                                    srcset="{{ asset('assets') }}/images/bg/1.jpg 2x" alt="">
                                             </div>
                                             <div class="nk-feature-content py-4 p-sm-5">
                                                 <h4>Dashlite</h4>
@@ -130,10 +72,8 @@
                                     <div class="slider-item">
                                         <div class="nk-feature nk-feature-center">
                                             <div class="nk-feature-img">
-                                                <img class="round"
-                                                    src="{{ asset('assets') }}/images/slides/promo-b.png"
-                                                    srcset="{{ asset('assets') }}/images/slides/promo-b2x.png 2x"
-                                                    alt="">
+                                                <img class="round" src="{{ asset('assets') }}/images/bg/3.jpg"
+                                                    srcset="{{ asset('assets') }}/images/bg/3.jpg 2x" alt="">
                                             </div>
                                             <div class="nk-feature-content py-4 p-sm-5">
                                                 <h4>Dashlite</h4>
@@ -145,10 +85,9 @@
                                     <div class="slider-item">
                                         <div class="nk-feature nk-feature-center">
                                             <div class="nk-feature-img">
-                                                <img class="round"
-                                                    src="{{ asset('assets') }}/images/slides/promo-c.png"
-                                                    srcset="{{ asset('assets') }}/images/slides/promo-c2x.png 2x"
-                                                    alt="">
+                                                <img class="round" style="width:100%"
+                                                    src="{{ asset('assets') }}/images/bg/3.png"
+                                                    srcset="{{ asset('assets') }}/images/bg/3.png 2x" alt="">
                                             </div>
                                             <div class="nk-feature-content py-4 p-sm-5">
                                                 <h4>Dashlite</h4>
