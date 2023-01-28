@@ -9,7 +9,7 @@
     <meta name="description"
         content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon.png">
+    <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon2.png">
     <!-- Page Title  -->
     <title>Tunas Bangsa | Dashboard.</title>
     <!-- StyleSheets  -->
@@ -46,11 +46,14 @@
                             data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                     </div>
                     <div class="nk-sidebar-brand">
-                        <a href="html/index.html" class="logo-link nk-sidebar-logo">
-                            <img class="logo-light logo-img" src="{{ asset('assets') }}/images/logo.png"
-                                srcset="{{ asset('assets') }}/images/logo2x.png 2x" alt="logo">
-                            <img class="logo-dark logo-img" src="{{ asset('assets') }}/images/logo-dark.png"
-                                srcset="{{ asset('assets') }}/images/logo-dark2x.png 2x" alt="logo-dark">
+                        <a href="html/index.html" class="logo-link nk-sidebar-logo" style="display: flex">
+                            <img class="logo-light logo-img" src="{{ asset('assets') }}/images/favicon2.png"
+                                srcset="{{ asset('assets') }}/images/favicon2.png 2x" alt="logo">
+                            <div style="margin-left: 10px;">
+                                <span>SMK</span>
+                                <br>
+                                <span>Tunas Bangsa</span>
+                            </div>
                         </a>
                     </div>
                 </div><!-- .nk-sidebar-element -->
