@@ -13,11 +13,11 @@ class AuthController extends Controller
         $pengguna = Pengguna::where('username',$request->username)->first();
 
         if(!$pengguna){
-            return redirect()->route('login.index')->with(['message'=>'Username atau password tidak ditemukan']);
+            return redirect()->route('login')->with(['message'=>'Username atau password tidak ditemukan']);
         }
 
         if($pengguna->password != md5($request->password)){
-            return redirect()->route('login.index')->with(['message'=>'Username atau password tidak ditemukan']);
+            return redirect()->route('login')->with(['message'=>'Username atau password tidak ditemukan']);
         }
 
         Auth::login($pengguna,true);

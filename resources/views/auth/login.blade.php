@@ -11,7 +11,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon.png">
     <!-- Page Title  -->
-    <title>Login | DashLite Admin Template</title>
+    <title>Login | Tunas Bangsa</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('assets') }}/assets//css/dashlite.css?ver=3.1.1">
     <link id="skin-default" rel="stylesheet" href="{{ asset('assets') }}/assets//css/theme.css?ver=3.1.1">
