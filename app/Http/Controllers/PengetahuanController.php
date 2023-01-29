@@ -6,6 +6,7 @@ use App\Models\pengetahuan;
 use App\Models\Guru;
 use App\Models\Siswa;
 use App\Models\Ajaran;
+use App\Models\Mapel;
 use Illuminate\Http\Request;
 use App\Helpers\AutoCode;
 
@@ -53,17 +54,18 @@ class PengetahuanController extends Controller
         $siswa = $request->kd_siswa;
         $deskripsi_k = $request->deskripsi_k;
         $guru = Guru::where('nip',auth()->user()->username)->first();
+        $mapel = Mapel::find($request->kd_mapel);
         for ($i=0; $i < count($siswa); $i++) {
             pengetahuan::create([
                 'kd_mapel'=>$request->kd_mapel,
-                'tingkat'=>$request->tingkat,
-                'kelas'=>$request->kelas,
+                'tingkat'=>$mapel->tingkat,
+                // 'kelas'=>$request->kelas,
                 'semester'=>$request->semester,
                 'kd_tahun'=>$request->kd_tahun,
                 'kd_siswa'=>$siswa[$i],
-                'harian'=>$harian[$i],
-                'uts'=>$uts[$i],
-                'uas'=>$uas[$i],
+                'harian'=>(int) $harian[$i],
+                'uts'=>(int) $uts[$i],
+                'uas'=>(int) $uas[$i],
                 'deskripsi_k'=>$deskripsi_k[$i],
                 'kd_guru'=>$guru->kd_guru,
                 'kd_np'=>AutoCode::code('NK')

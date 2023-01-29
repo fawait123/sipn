@@ -120,11 +120,12 @@ class SikapController extends Controller
         $sikap = $request->sikap;
 
         for($i=0; $i<count($kd_siswa); $i++){
+            $siswa = Siswa::find($kd_siswa[$i]);
             sikap::create([
                 'kd_nsikap'=>AutoCode::code('PKR'),
                 'kd_wali'=>$request->kd_wali,
-                'tingkat'=>$request->tingkat,
-                'kelas'=>$request->kelas,
+                'tingkat'=>$siswa->tingkat,
+                // 'kelas'=>$request->kelas,
                 'semester'=>$request->semester,
                 'kd_tahun'=>$request->kd_tahun,
                 'kd_siswa'=>$kd_siswa[$i],

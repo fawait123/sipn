@@ -123,11 +123,12 @@ class EkstrakurikulerController extends Controller
         $predikat = $request->predikat;
 
         for($i=0; $i<count($kd_siswa); $i++){
+            $siswa = Siswa::find($kd_siswa[$i]);
             ekstrakurikuler::create([
                 'kd_nekskul'=>AutoCode::code('PKR'),
                 'kd_wali'=>$request->kd_wali,
-                'tingkat'=>$request->tingkat,
-                'kelas'=>$request->kelas,
+                'tingkat'=>$siswa->tingkat,
+                // 'kelas'=>$request->kelas,
                 'semester'=>$request->semester,
                 'kd_tahun'=>$request->kd_tahun,
                 'kd_ekskul'=>$request->kd_ekskul,

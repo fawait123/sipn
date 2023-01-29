@@ -23,13 +23,13 @@ class Nilai extends Component
     {
         $isShow = $this->isShow;
         $siswa = Siswa::with('prodi')->where('nis',auth()->user()->kode)->first();
-        $pengetahuan = Pengetahuan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->where('kelas',$this->kelas)->where('tingkat',$this->tingkat)->get();
-        $keterampilan = keterampilan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->where('kelas',$this->kelas)->where('tingkat',$this->tingkat)->get();
-        $prakerin = prakerin::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->where('kelas',$this->kelas)->where('tingkat',$this->tingkat)->get();
-        $sikap = sikap::with('wali.guru')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->where('kelas',$this->kelas)->where('tingkat',$this->tingkat)->get();
-        $catatan = catatan::with('wali.guru')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->where('kelas',$this->kelas)->where('tingkat',$this->tingkat)->get();
-        $ekskul = Ekstrakurikuler::with('ekskul')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->where('kelas',$this->kelas)->where('tingkat',$this->tingkat)->get();
-        $absen = Absen::with('wali')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->where('kelas',$this->kelas)->where('tingkat',$this->tingkat)->get();
+        $pengetahuan = Pengetahuan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $keterampilan = keterampilan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $prakerin = prakerin::where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $sikap = sikap::with('wali.guru')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $catatan = catatan::with('wali.guru')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $ekskul = Ekstrakurikuler::with('ekskul')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $absen = Absen::with('wali')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
         $semester = $this->semester;
         $tingkat = $this->tingkat;
         $kelas = $this->kelas;
@@ -40,21 +40,33 @@ class Nilai extends Component
     public function show($data)
     {
         $this->semester = $data['semester'];
-        $this->kelas = $data['kelas'];
+        // $this->kelas = $data['kelas'];
         $this->tingkat = $data['tingkat'];
         $this->isShow = true;
     }
 
     public function download()
     {
+        // $isShow = $this->isShow;
+        // $siswa = Siswa::with('prodi')->where('nis',auth()->user()->kode)->first();
+        // $pengetahuan = Pengetahuan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        // $keterampilan = keterampilan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        // $prakerin = prakerin::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        // $sikap = sikap::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        // $catatan = catatan::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        // $semester = $this->semester;
         $isShow = $this->isShow;
         $siswa = Siswa::with('prodi')->where('nis',auth()->user()->kode)->first();
-        $pengetahuan = Pengetahuan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
-        $keterampilan = keterampilan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
-        $prakerin = prakerin::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
-        $sikap = sikap::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
-        $catatan = catatan::where('kd_siswa',$siswa->kd_siswa)->where('semester',$this->semester)->get();
+        $pengetahuan = Pengetahuan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $keterampilan = keterampilan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $prakerin = prakerin::where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $sikap = sikap::with('wali.guru')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $catatan = catatan::with('wali.guru')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $ekskul = Ekstrakurikuler::with('ekskul')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
+        $absen = Absen::with('wali')->where('kd_siswa',$siswa->kd_siswa)->where('tingkat',$this->tingkat)->get();
         $semester = $this->semester;
+        $tingkat = $this->tingkat;
+        $kelas = $this->kelas;
         $pdf = Pdf::loadView('pages.nilai.download',compact('isShow','siswa','pengetahuan','keterampilan','prakerin','catatan','semester'));
         return $pdf->download('rekap-nilai.pdf');
     }

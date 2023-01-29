@@ -121,7 +121,8 @@ class GuruController extends Controller
 
     public function mapel(Request $request,$id)
     {
-        GuruMapel::create(array_merge($request->all(),['kd_gumap'=>AutoCode::code('GRM'),'kd_guru'=>$id]));
+        $mapel = Mapel::find($request->kd_mapel);
+        GuruMapel::create(array_merge($request->all(),['kd_gumap'=>AutoCode::code('GRM'),'kd_guru'=>$id,'tingkat'=>$mapel->tingkat]));
         return redirect()->route('guru.index')->with(['message'=>'Berhasil menambahkan data pelajaran']);
     }
 

@@ -124,6 +124,7 @@ class PrakerinController extends Controller
         $keterangan  = $request->keterangan;
 
         for($i=0; $i<count($kd_siswa); $i++){
+            $siswa = Siswa::find($kd_siswa[$i]);
             Prakerin::create([
                 'kd_npkl'=>AutoCode::code('PKR'),
                 'kd_siswa'=>$kd_siswa[$i],
@@ -134,8 +135,8 @@ class PrakerinController extends Controller
                 'kd_tahun'=>$request->kd_tahun,
                 'semester'=>$request->semester,
                 'kd_wali'=>$request->kd_wali,
-                'tingkat'=>$request->tingkat,
-                'kelas'=>$request->kelas,
+                'tingkat'=>$siswa->tingkat,
+                // 'kelas'=>$request->kelas,
             ]);
         }
 

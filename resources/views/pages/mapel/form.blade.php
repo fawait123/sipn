@@ -50,15 +50,12 @@
                                                     <div class="form-control-wrap">
                                                         <select name="tingkat" id="tingkat" class="form-control" required>
                                                             <option value="">pilih</option>
-                                                            <option value="SD"
-                                                                {{ isset($id) ? ($mapel->tingkat == 'SD' ? 'selected' : '') : '' }}>
-                                                                SD</option>
-                                                            <option value="SMP"
-                                                                {{ isset($id) ? ($mapel->tingkat == 'SMP' ? 'selected' : '') : '' }}>
-                                                                SMP</option>
-                                                            <option value="SMA"
-                                                                {{ isset($id) ? ($mapel->tingkat == 'SMA' ? 'selected' : '') : '' }}>
-                                                                SMA</option>
+                                                            @for ($i = 1; $i < 7; $i++)
+                                                                <option value="{{ $i }}"
+                                                                    {{ isset($id) ? ($mapel->tingkat == $i ? 'selected' : '') : '' }}>
+                                                                    {{ $i }}
+                                                                </option>
+                                                            @endfor
                                                         </select>
                                                     </div>
                                                 </div>

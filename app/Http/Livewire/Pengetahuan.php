@@ -35,7 +35,7 @@ class Pengetahuan extends Component
     {
         $query = PengetahuanModel::query();
         $query = $query->with(['mapel','siswa','ajaran']);
-        $query = $query->where('kd_mapel',$this->kd_mapel)->where('tingkat',$this->tingkat)->where('kelas','like',$this->kelas);
+        $query = $query->where('kd_mapel',$this->kd_mapel);
         if($this->search != '')
         {
             $query = $query->whereHas('siswa',function($qr){

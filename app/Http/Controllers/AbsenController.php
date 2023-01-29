@@ -122,11 +122,12 @@ class AbsenController extends Controller
         $tanpa_ket = $request->tanpa_ket;
 
         for($i=0; $i<count($kd_siswa); $i++){
+            $siswa = Siswa::find($kd_siswa[$i]);
             absen::create([
                 'kd_nabsen'=>AutoCode::code('PKR'),
                 'kd_wali'=>$request->kd_wali,
-                'tingkat'=>$request->tingkat,
-                'kelas'=>$request->kelas,
+                'tingkat'=>$siswa->tingkat,
+                // 'kelas'=>$request->kelas,
                 'semester'=>$request->semester,
                 'kd_tahun'=>$request->kd_tahun,
                 'kd_siswa'=>$kd_siswa[$i],

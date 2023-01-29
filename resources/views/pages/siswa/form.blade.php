@@ -83,7 +83,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="tingkat">Tingkat</label>
                                                     <div class="form-control-wrap">
@@ -101,17 +101,19 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
+                                            </div> --}}
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="fv-topics">Kelas</label>
+                                                    <label class="form-label" for="fv-topics">Tingkat</label>
                                                     <div class="form-control-wrap ">
-                                                        <select class="form-select js-select2" id="kelas" name="kelas"
+                                                        <select class="form-select js-select2" id="tingkat" name="tingkat"
                                                             data-placeholder="Select a option" required>
                                                             <option label="pilih" value=""></option>
-                                                            @for ($i = 1; $i < 7; $i++)
+                                                            @for ($i = 1; $i < 4; $i++)
                                                                 <option label="{{ $i }}"
-                                                                    value="{{ $i }}">
+                                                                    value="{{ $i }}"
+                                                                    {{ isset($id) ? ($siswa->tingkat == $i ? 'selected' : '') : '' }}>
+                                                                    {{ $i }}
                                                                 </option>
                                                             @endfor
                                                         </select>
@@ -123,8 +125,8 @@
                                                     <label class="form-label" for="fv-subject">Nama Orang Tua</label>
                                                     <div class="form-control-wrap">
                                                         <input type="text" class="form-control"
-                                                            value="{{ isset($id) ? $siswa->nm_ortu : '' }}"
-                                                            id="fv-subject" name="nm_ortu" required>
+                                                            value="{{ isset($id) ? $siswa->nm_ortu : '' }}" id="fv-subject"
+                                                            name="nm_ortu" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,7 +202,7 @@
 @endsection
 
 @push('customjs')
-    <script>
+    {{-- <script>
         function getKelas(kelas) {
             let id = '{{ isset($id) ? $siswa->kelas : null }}'
             let option = '<option value="">pilih</option>'
@@ -234,5 +236,5 @@
             let kelas = $("#tingkat").find(':selected').val()
             getKelas(kelas)
         })
-    </script>
+    </script> --}}
 @endpush

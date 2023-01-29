@@ -62,12 +62,12 @@
                     <div class="col-6" style="position: absolute; top:0; left:0">
                         <p>NIS/NISN</p>
                         <p>Semester</p>
-                        <p>Tingkat / Kelas</p>
+                        <p>Tingkat</p>
                     </div>
                     <div class="col-6" style="position: absolute; top:0; right:0">
                         <p>: {{ $siswa->nis }}</p>
                         <p>: {{ $semester }}</p>
-                        <p>: {{ $tingkat }} / {{ $kelas }}</p>
+                        <p>: {{ $tingkat }}</p>
                     </div>
                 </div>
             </div>
@@ -322,11 +322,11 @@
             <tbody>
                 <tr>
                     <td align="right"><b>Jumlah</b></td>
-                    <td align="left"><b>{{ $total }}</b></td>
+                    <td align="left"><b>{{ (int) $total }}</b></td>
                 </tr>
                 <tr>
                     <td align="right"><b>Rata Rata</b></td>
-                    <td align="left"><b>{{ $total / $jumlah }}</b></td>
+                    <td align="left"><b>{{ $total > 0 ? (int) $total / $jumlah : 0 }}</b></td>
                 </tr>
             </tbody>
         </table>

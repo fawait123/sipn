@@ -60,6 +60,10 @@
                             <div class="nk-block">
                                 <div class="row g-gs">
                                     @foreach ($row->gurumapel as $item)
+                                        @php
+                                            $avatar = $item->mapel->nm_mapel;
+                                            $avatar = substr($avatar, 0, 1);
+                                        @endphp
                                         <div class="col-sm-6 col-lg-4 col-xxl-3">
                                             <div class="card card-bordered h-100">
                                                 <div class="card-inner">
@@ -68,11 +72,11 @@
                                                             <a href="{{ route('keterampilan.index') }}?kd_mapel={{ $item->kd_mapel }}"
                                                                 class="project-title">
                                                                 <div class="user-avatar sq bg-purple">
-                                                                    <span>{{ $item->tingkat }}</span>
+                                                                    <span>{{ strtoupper($avatar) }}</span>
                                                                 </div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">{{ $item->mapel->nm_mapel }}</h6>
-                                                                    <span class="sub-text">{{ $item->tingkat }}</span>
+                                                                    <span class="sub-text">Tingkat {{ $item->tingkat }}</span>
                                                                 </div>
                                                             </a>
                                                             <div class="drodown">
@@ -103,7 +107,7 @@
                                                             <p>{{ $item->nm_guru }} kamu mengampuh
                                                                 {{ $item->mapel->nm_mapel }} di
                                                                 tingkat
-                                                                {{ $item->tingkat }} kelas {{ $item->kelas }}</p>
+                                                                {{ $item->tingkat }}</p>
                                                         </div>
                                                         <div class="project-meta">
                                                             <span class="badge badge-dim bg-warning"><em

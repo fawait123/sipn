@@ -52,7 +52,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="tingkat">Tingkat</label>
                                                     <div class="form-control-wrap">
@@ -71,7 +71,7 @@
                                                             name="kelas" required readonly>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label" for="semester">Semester</label>
@@ -131,28 +131,28 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="proses">Proses</label>
+                                                        <label class="form-label" for="proses">Harian</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="proses"
-                                                                name="proses[{{ $no++ }}]" required>
+                                                            <input type="text" class="form-control" id="harian"
+                                                                name="harian[{{ $no++ }}]" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="produk">Produk</label>
+                                                        <label class="form-label" for="produk">UTS</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="produk"
-                                                                name="produk[{{ $no1++ }}]" required>
+                                                            <input type="text" class="form-control" id="uts"
+                                                                name="uts[{{ $no1++ }}]" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="proyek">Proyek</label>
+                                                        <label class="form-label" for="proyek">UAS</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" class="form-control" id="proyek"
-                                                                name="proyek[{{ $no2++ }}]" required>
+                                                            <input type="text" class="form-control" id="uas"
+                                                                name="uas[{{ $no2++ }}]" required>
                                                         </div>
                                                     </div>
                                                 </div>

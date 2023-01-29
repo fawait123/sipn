@@ -20,15 +20,15 @@
                                                     <option value="genap">Genap</option>
                                                 </select>
                                             </li>
-                                            <li>
+                                            {{-- <li>
                                                 <select name="tingkat" id="tingkat" class="form-control">
                                                     <option value="SD" selected>SD</option>
                                                     <option value="SMP">SMP</option>
                                                     <option value="SMA">SMA</option>
                                                 </select>
-                                            </li>
+                                            </li> --}}
                                             <li>
-                                                <select name="kelas" id="kelas" class="form-control">
+                                                <select name="tingkat" id="tingkat" class="form-control">
                                                     @for ($i = 1; $i < 7; $i++)
                                                         <option value="{{ $i }}">Kelas {{ $i }}
                                                         </option>
@@ -85,12 +85,12 @@
                                                 <div class="col-6">
                                                     <p>NIS/NISN</p>
                                                     <p>Semester</p>
-                                                    <p>Tingkat / Kelas</p>
+                                                    <p>Tingkat</p>
                                                 </div>
                                                 <div class="col-6">
                                                     <p>: {{ $siswa->nis }}</p>
                                                     <p>: {{ $semester }}</p>
-                                                    <p>: {{ $tingkat }} / Kelas {{ $kelas }}</p>
+                                                    <p>: {{ $tingkat }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -362,11 +362,12 @@
                                         <tbody>
                                             <tr>
                                                 <td align="right"><b>Jumlah</b></td>
-                                                <td align="left"><b>{{ $total }}</b></td>
+                                                <td align="left"><b>{{ (int) $total }}</b></td>
                                             </tr>
                                             <tr>
                                                 <td align="right"><b>Rata Rata</b></td>
-                                                <td align="left"><b>{{ $total / $jumlah }}</b></td>
+                                                <td align="left"><b>{{ $total > 0 ? (int) $total / $jumlah : 0 }}</b>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

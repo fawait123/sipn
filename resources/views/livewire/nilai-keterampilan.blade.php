@@ -32,10 +32,11 @@
                                                         <select name="kd_gumap" id="kd_gumap" class="form-control"
                                                             wire:model="gurumapel" required>
                                                             <option value="">pilih</option>
-                                                            @foreach ($mapel as $item)
-                                                                <option value="{{ $item->kd_gumap }}">
+                                                            @foreach ($mapels as $item)
+                                                                <option value="{{ $item->kd_gumap }}"
+                                                                    {{ $mapel2 != '' ? ($mapel2 == $item->kd_mapel ? 'selected' : '') : '' }}>
                                                                     {{ $item->mapel->nm_mapel ?? '' }}
-                                                                    {{ 'Tingkat ' . $item->tingkat . ' kelas ' . $item->kelas }}
+                                                                    {{ 'Tingkat ' . $item->tingkat }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -52,7 +53,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="tingkat">Tingkat</label>
                                                     <div class="form-control-wrap">
@@ -71,7 +72,7 @@
                                                             name="kelas" required readonly>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label" for="semester">Semester</label>

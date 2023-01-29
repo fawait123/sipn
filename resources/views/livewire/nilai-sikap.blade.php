@@ -30,7 +30,7 @@
                                                         class="form-control" readonly required>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="semester">Tingkat</label>
                                                     <input type="text" name="tingkat" value="{{ $tingkat }}"
@@ -43,7 +43,7 @@
                                                     <input type="text" name="kelas" value="{{ $kelas }}"
                                                         class="form-control" readonly required>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="semester">Semester</label>

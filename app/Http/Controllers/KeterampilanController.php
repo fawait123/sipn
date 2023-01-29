@@ -7,6 +7,7 @@ use App\Models\Guru;
 use App\Models\Siswa;
 use App\Models\Ajaran;
 use App\Models\GuruMapel;
+use App\Models\Mapel;
 use Illuminate\Http\Request;
 use App\Helpers\AutoCode;
 
@@ -54,17 +55,18 @@ class KeterampilanController extends Controller
         $siswa = $request->kd_siswa;
         $deskripsi_k = $request->deskripsi_k;
         $guru = Guru::where('nip',auth()->user()->username)->first();
+        $mapel = Mapel::find($request->kd_mapel);
         for ($i=0; $i < count($siswa); $i++) {
             Keterampilan::create([
                 'kd_mapel'=>$request->kd_mapel,
-                'tingkat'=>$request->tingkat,
-                'kelas'=>$request->kelas,
+                'tingkat'=>$mapel->tingkat,
+                // 'kelas'=>$request->kelas,
                 'semester'=>$request->semester,
                 'kd_tahun'=>$request->kd_tahun,
                 'kd_siswa'=>$siswa[$i],
-                'produk'=>$produk[$i],
-                'proyek'=>$proyek[$i],
-                'proses'=>$proses[$i],
+                'produk'=>(int) $produk[$i],
+                'proyek'=>(int) $proyek[$i],
+                'proses'=>(int) $proses[$i],
                 'deskripsi_k'=>$deskripsi_k[$i],
                 'kd_guru'=>$guru->kd_guru,
                 'kd_nk'=>AutoCode::code('NK')
