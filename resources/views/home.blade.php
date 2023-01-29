@@ -111,7 +111,7 @@
                                                                 <span class="amount">{{ $total_mapel }}</span>
                                                                 <span class="sub-title"><span
                                                                         class="change down text-danger"><em
-                                                                            class="icon ni ni-arrow-long-down"></em>{{ $mapel_last_update->created_at->diffForHumans() }}</span>
+                                                                            class="icon ni ni-arrow-long-down"></em>{{ $mapel_last_update ? $mapel_last_update->created_at->diffForHumans() : '' }}</span>
                                                                     Update terakhir</span>
                                                             </div>
                                                             {{-- <div class="nk-sales-ck">
@@ -140,7 +140,7 @@
                                                                 <span class="amount">{{ $total_guru }}</span>
                                                                 <span class="sub-title"><span
                                                                         class="change down text-danger"><em
-                                                                            class="icon ni ni-arrow-long-down"></em>{{ $guru_last_update->created_at->diffForHumans() }}</span>
+                                                                            class="icon ni ni-arrow-long-down"></em>{{ $guru_last_update ? $guru_last_update->created_at->diffForHumans() : '' }}</span>
                                                                     Update terakhir</span>
                                                             </div>
                                                             {{-- <div class="nk-sales-ck">
@@ -170,7 +170,7 @@
                                                                 <span class="amount">{{ $total_siswa }}</span>
                                                                 <span class="sub-title"><span
                                                                         class="change down text-danger"><em
-                                                                            class="icon ni ni-arrow-long-down"></em>{{ $siswa_last_update->created_at->diffForHumans() }}</span>
+                                                                            class="icon ni ni-arrow-long-down"></em>{{ $siswa_last_update ? $siswa_last_update->created_at->diffForHumans() : '' }}</span>
                                                                     Update terakhir</span>
                                                             </div>
                                                             {{-- <div class="nk-sales-ck">
@@ -199,7 +199,7 @@
                                                                 <span class="amount">{{ $total_prodi }}</span>
                                                                 <span class="sub-title"><span
                                                                         class="change down text-danger"><em
-                                                                            class="icon ni ni-arrow-long-down"></em>{{ $prodi_last_update->created_at->diffForHumans() }}</span>
+                                                                            class="icon ni ni-arrow-long-down"></em>{{ $prodi_last_update ? $prodi_last_update->created_at->diffForHumans() : '' }}</span>
                                                                     Update terakhir</span>
                                                             </div>
                                                             {{-- <div class="nk-sales-ck">
@@ -228,7 +228,7 @@
                                                                 <span class="amount">{{ $total_ekskul }}</span>
                                                                 <span class="sub-title"><span
                                                                         class="change down text-danger"><em
-                                                                            class="icon ni ni-arrow-long-down"></em>{{ $ekskul_last_update->created_at->diffForHumans() }}</span>
+                                                                            class="icon ni ni-arrow-long-down"></em>{{ $ekskul_last_update ? $ekskul_last_update->created_at->diffForHumans() : '' }}</span>
                                                                     Update terakhir</span>
                                                             </div>
                                                             {{-- <div class="nk-sales-ck">
@@ -257,7 +257,7 @@
                                                                 <span class="amount">{{ $total_pengguna }}</span>
                                                                 <span class="sub-title"><span
                                                                         class="change down text-danger"><em
-                                                                            class="icon ni ni-arrow-long-down"></em>{{ $pengguna_last_update->created_at->diffForHumans() }}</span>
+                                                                            class="icon ni ni-arrow-long-down"></em>{{ $pengguna_last_update ? $pengguna_last_update->created_at->diffForHumans() : '' }}</span>
                                                                     Update terakhir</span>
                                                             </div>
                                                             {{-- <div class="nk-sales-ck">
