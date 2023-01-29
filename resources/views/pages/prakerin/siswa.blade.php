@@ -17,7 +17,6 @@
                             @php
                                 $siswa = Siswa::where('tingkat', $row->tingkat)
                                     ->where('kd_prodi', $row->kd_prodi)
-                                    ->where('kelas', $row->kelas)
                                     ->get();
                             @endphp
                             <div class="nk-block-head nk-block-head-sm">
@@ -75,6 +74,7 @@
                                                 ->where('tingkat', $item->tingkat)
                                                 ->where('kelas', $item->kelas)
                                                 ->get();
+                                            $avatar = substr($item->nm_siswa, 0, 1);
                                         @endphp
                                         <div class="col-sm-6 col-lg-4 col-xxl-3">
                                             <div class="card card-bordered h-100">
@@ -85,7 +85,7 @@
                                                                 data-bs-target="#modalZoom{{ $no }}"
                                                                 class="project-title">
                                                                 <div class="user-avatar sq bg-purple">
-                                                                    <span>{{ $item->tingkat }}</span>
+                                                                    <span>{{ strtoupper($avatar) }}</span>
                                                                 </div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">{{ $item->nm_siswa }}</h6>
@@ -120,7 +120,7 @@
                                                             <p>{{ $row->guru->nm_guru }} kamu mempunyai siswa didik
                                                                 {{ $item->nm_siswa }} di
                                                                 tingkat
-                                                                {{ $item->tingkat }} kelas {{ $item->kelas }}</p>
+                                                                {{ $item->tingkat }}</p>
                                                         </div>
                                                         <div class="project-meta">
                                                             <span class="badge badge-dim bg-warning"><em

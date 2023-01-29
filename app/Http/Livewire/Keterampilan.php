@@ -34,7 +34,7 @@ class Keterampilan extends Component
     {
         $query = KeterampilanModel::query();
         $query = $query->with(['mapel','siswa','ajaran']);
-        $query = $query->where('kd_mapel',$this->kd_mapel)->where('tingkat','like',$this->tingkat)->where('kelas',$this->kelas);
+        $query = $query->where('kd_mapel',$this->kd_mapel);
         if($this->search != '')
         {
             $query = $query->whereHas('siswa',function($qr){

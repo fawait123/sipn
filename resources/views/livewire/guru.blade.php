@@ -158,7 +158,7 @@
                                                                         <th scope="col">#</th>
                                                                         <th scope="col">Matapelajaran</th>
                                                                         <th scope="col">Tingkat</th>
-                                                                        <th scope="col">Kelas</th>
+                                                                        {{-- <th scope="col">Kelas</th> --}}
                                                                         <th scope="col">Aksi</th>
                                                                     </tr>
                                                                 </thead>
@@ -169,9 +169,10 @@
                                                                                 <th scope="row">
                                                                                     {{ $loop->iteration }}
                                                                                 </th>
-                                                                                <td>{{ $row->mapel->nm_mapel }}</td>
+                                                                                <td>{{ $row->mapel->nm_mapel ?? '' }}
+                                                                                </td>
                                                                                 <td>{{ $row->tingkat }}</td>
-                                                                                <td>{{ $row->kelas }}</td>
+                                                                                {{-- <td>{{ $row->kelas }}</td> --}}
                                                                                 <td>
                                                                                     <a
                                                                                         href="{{ route('guru.mapel.edit', $row->kd_gumap) }}">edit</a>

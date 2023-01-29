@@ -25,13 +25,13 @@ class NilaiController extends Controller
     {
         $isShow = true;
         $siswa = Siswa::with('prodi')->where('nis',auth()->user()->kode)->first();
-        $pengetahuan = Pengetahuan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('kelas',$request->kelas)->where('tingkat',$request->tingkat)->get();
-        $keterampilan = keterampilan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('kelas',$request->kelas)->where('tingkat',$request->tingkat)->get();
-        $prakerin = prakerin::where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('kelas',$request->kelas)->where('tingkat',$request->tingkat)->get();
-        $sikap = sikap::with('wali.guru')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('kelas',$request->kelas)->where('tingkat',$request->tingkat)->get();
-        $catatan = catatan::with('wali.guru')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('kelas',$request->kelas)->where('tingkat',$request->tingkat)->get();
-        $ekskul = Ekstrakurikuler::with('ekskul')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('kelas',$request->kelas)->where('tingkat',$request->tingkat)->get();
-        $absen = Absen::with('wali')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('kelas',$request->kelas)->where('tingkat',$request->tingkat)->get();
+        $pengetahuan = Pengetahuan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('tingkat',$request->tingkat)->get();
+        $keterampilan = keterampilan::with('mapel')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('tingkat',$request->tingkat)->get();
+        $prakerin = prakerin::where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('tingkat',$request->tingkat)->get();
+        $sikap = sikap::with('wali.guru')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('tingkat',$request->tingkat)->get();
+        $catatan = catatan::with('wali.guru')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('tingkat',$request->tingkat)->get();
+        $ekskul = Ekstrakurikuler::with('ekskul')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('tingkat',$request->tingkat)->get();
+        $absen = Absen::with('wali')->where('kd_siswa',$siswa->kd_siswa)->where('semester',$request->semester)->where('tingkat',$request->tingkat)->get();
         $semester = $request->semester;
         $tingkat = $request->tingkat;
         $kelas = $request->kelas;

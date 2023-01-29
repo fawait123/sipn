@@ -10,16 +10,18 @@ use App\Models\Ajaran;
 
 class NilaiKeterampilan extends Component
 {
-    public $gurumapel;
-    protected $queryString = ['gurumapel'];
+    public $gurumapel = '';
+    public $mapel = '';
+    protected $queryString = ['gurumapel','mapel'];
     public function render()
     {
         $guru = Guru::where('nip',auth()->user()->kode)->first();
-        $mapel = GuruMapel::with('mapel')->where('kd_guru',$guru->kd_guru)->get();
+        $mapels = GuruMapel::with('mapel')->where('kd_guru',$guru->kd_guru)->get();
         $ajaran = Ajaran::all();
         $selected = GuruMapel::where('kd_gumap',$this->gurumapel)->first();
         $kd = $this->gurumapel;
         $siswa = Siswa::where('kelas',$selected->kelas ?? null)->where('tingkat',$selected->tingkat ?? null)->get();
-        return view('livewire.nilai-keterampilan',compact('mapel','ajaran','siswa','selected','kd'));
+        $mapel2 = $this->mapel;
+        return view('livewire.nilai-keterampilan',compact('mapels','ajaran','siswa','selected','kd','mapel2'));
     }
 }

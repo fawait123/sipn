@@ -35,13 +35,13 @@
                                                         @foreach ($mapel as $item)
                                                             <option value="{{ $item->kd_mapel }}"
                                                                 {{ isset($id) ? ($guru->kd_mapel == $item->kd_mapel ? 'selected' : '') : '' }}>
-                                                                {{ $item->nm_mapel }}
+                                                                {{ $item->nm_mapel }} - Tingkat {{ $item->tingkat }}
                                                             </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="tingkat">Tingkatan</label>
                                                     <select name="tingkat" id="tingkat" class="form-control" required>
@@ -58,19 +58,21 @@
                                                             SMA</option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
+                                            </div> --}}
+                                            {{-- <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="kelas">Kelas</label>
-                                                    <select name="kelas" id="kelas" class="form-control" required>
+                                                    <label class="form-label" for="tingkat">Tingkat</label>
+                                                    <select name="tingkat" id="tingkat" class="form-control" required>
                                                         <option value="">pilih</option>
                                                         @for ($i = 1; $i < 7; $i++)
-                                                            <option value="{{ $i }}">{{ $i }}
+                                                            <option value="{{ $i }}"
+                                                                {{ isset($id) ? ($guru->tingkat == $i ? 'selected' : '') : '' }}>
+                                                                {{ $i }}
                                                             </option>
                                                         @endfor
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-lg btn-primary">Simpan</button>
