@@ -12,7 +12,7 @@
                                 <div class="nk-block-head-sub"><a class="back-to" href="{{ route('pengetahuan.mapel') }}"><em
                                             class="icon ni ni-arrow-left"></em><span>Form</span></a></div>
                                 <h2 class="nk-block-title fw-normal">{{ isset($id) ? 'Ubah' : 'Tambah' }} Data Nilai
-                                    pengetahuan
+                                    Pengetahuan
                                 </h2>
                             </div>
                         </div><!-- .nk-block-head -->

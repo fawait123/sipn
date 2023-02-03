@@ -12,7 +12,7 @@
                                 <div class="nk-block-head-sub"><a class="back-to" href="{{ route('absen.wali') }}"><em
                                             class="icon ni ni-arrow-left"></em><span>Form</span></a></div>
                                 <h2 class="nk-block-title fw-normal">{{ isset($id) ? 'Ubah' : 'Tambah' }} Data Nilai
-                                    absen
+                                    Absen
                                 </h2>
                             </div>
                         </div><!-- .nk-block-head -->

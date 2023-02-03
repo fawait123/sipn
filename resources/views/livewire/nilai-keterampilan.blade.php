@@ -10,7 +10,7 @@
                                         href="{{ route('keterampilan.mapel') }}"><em
                                             class="icon ni ni-arrow-left"></em><span>Form</span></a></div>
                                 <h2 class="nk-block-title fw-normal">{{ isset($id) ? 'Ubah' : 'Tambah' }} Data Nilai
-                                    keterampilan
+                                    Keterampilan
                                 </h2>
                             </div>
                         </div><!-- .nk-block-head -->
