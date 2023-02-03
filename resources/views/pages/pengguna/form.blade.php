@@ -11,7 +11,7 @@
                             <div class="nk-block-head-content">
                                 <div class="nk-block-head-sub"><a class="back-to" href="{{ route('pengguna.index') }}"><em
                                             class="icon ni ni-arrow-left"></em><span>Form</span></a></div>
-                                <h2 class="nk-block-title fw-normal">{{ isset($id) ? 'Ubah' : 'Tambah' }} Data pengguna</h2>
+                                <h2 class="nk-block-title fw-normal">{{ isset($id) ? 'Ubah' : 'Tambah' }} Data Pengguna</h2>
                             </div>
                         </div><!-- .nk-block-head -->
                         <div class="nk-block nk-block-lg">

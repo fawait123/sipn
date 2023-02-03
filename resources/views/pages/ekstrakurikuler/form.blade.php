@@ -13,7 +13,7 @@
                                         href="{{ route('ekstrakurikuler.wali') }}"><em
                                             class="icon ni ni-arrow-left"></em><span>Form</span></a></div>
                                 <h2 class="nk-block-title fw-normal">{{ isset($id) ? 'Ubah' : 'Tambah' }} Data Nilai
-                                    ekstrakurikuler
+                                    Ekstrakurikuler
                                 </h2>
                             </div>
                         </div><!-- .nk-block-head -->
