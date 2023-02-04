@@ -6,7 +6,7 @@
         -->
         @php
             use App\Models\Siswa;
-            use App\Models\absen;
+            use App\Models\Absen;
             $no = 1;
         @endphp
         <div class="nk-content ">
